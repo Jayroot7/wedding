@@ -34,9 +34,9 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .face svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 12px 14px rgba(70,65,50,.22))}
 .face.back{transform:rotateX(180deg)}
-.env .to{position:absolute;top:11%;left:0;right:0}
+.env .to{position:absolute;top:9%;left:0;right:0;padding:0 18px}
 .env .to .caps{font-size:clamp(.7rem,1.6vw,.95rem);color:#5d594f;letter-spacing:.14em}
-.env .to .script{font-size:clamp(2.2rem,5.4vw,3.6rem);color:#34332f;margin-top:.1em}
+.env .to .script{font-size:clamp(1.9rem,8.5vw,3.6rem);line-height:1.15;color:#34332f;margin-top:.1em}
 .seal{position:absolute;left:50%;top:93%;width:clamp(74px,11vw,112px);aspect-ratio:.78;transform:translate(-50%,-50%);border:0;padding:0;cursor:pointer;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fffaf0,#f1e8d2 62%,#e2d8be);box-shadow:inset 0 2px 3px #fff,inset 0 -6px 10px rgba(110,105,90,.28),0 8px 14px rgba(70,65,50,.3);animation:pulse 3s ease-in-out infinite}
 .seal::before{content:"";position:absolute;inset:7%;border-radius:50%;border:1.5px solid rgba(120,115,98,.38);box-shadow:inset 0 1px 1px #fff}
 .seal svg{position:absolute;inset:12% 18%;width:64%;height:76%;overflow:visible}
@@ -48,7 +48,7 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 /* hero */
 .hero{min-height:92vh;display:flex;align-items:center;padding-top:72px}
 .hero .names{font-size:clamp(1.6rem,4vw,2.2rem);color:var(--olive);margin:.6em 0 0}
-.hero h1{font-size:clamp(3.2rem,11vw,6.6rem);line-height:1;margin:.1em 0 .15em;font-weight:400}
+.hero h1{font-size:clamp(2.7rem,10.5vw,6rem);line-height:1.1;margin:.1em 0 .2em;padding:0 4px;font-weight:400}
 .hero .city{font-size:clamp(1.2rem,3vw,1.6rem);letter-spacing:.32em;text-transform:uppercase;font-weight:500;margin:0}
 .hero .date{margin-top:.6em}
 
@@ -58,17 +58,16 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 .land svg,.land img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(255,253,247,.7),rgba(255,253,247,.05) 38%,rgba(255,253,247,.0) 70%,rgba(255,253,247,.35))}
 .story .caps{color:#4f4c44}
-.usephoto{position:absolute;z-index:3;right:14px;top:14px;background:rgba(255,254,251,.85);border:1px solid var(--line);padding:8px 14px;font:inherit;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);cursor:pointer}
 .collage{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
 .polaroid{position:relative;width:min(280px,78vw);background:var(--card);padding:14px 14px 46px;box-shadow:0 18px 40px rgba(40,40,30,.25);transform:rotate(-2.5deg)}
 .polaroid .slot{aspect-ratio:1/1.08}
 .polaroid .stamp{position:absolute;top:-24px;left:4px;font-size:.8rem;letter-spacing:.18em;color:#4f4c44}
-.tag{position:absolute;right:-40px;top:-34px;width:92px;padding:18px 8px 14px;background:var(--khaki);color:#4f4b40;border-radius:8px 8px 26px 26px;font-size:1.05rem;line-height:1.1;transform:rotate(8deg);box-shadow:0 6px 14px var(--shadow)}
+.tag{position:absolute;right:-14px;top:-34px;width:96px;padding:18px 8px 14px;background:var(--khaki);color:#4f4b40;border-radius:8px 8px 26px 26px;font-size:1.05rem;line-height:1.1;transform:rotate(8deg);box-shadow:0 6px 14px var(--shadow)}
 .tag::before{content:"";position:absolute;top:-16px;left:50%;width:24px;height:24px;margin-left:-12px;border:2px solid #b9ad8a;border-radius:50%}
 .heart{position:relative;width:min(310px,82vw);margin:-34px 0 0 -40px;transform:rotate(-3deg)}
 .heart svg{width:100%;display:block;filter:drop-shadow(0 12px 18px rgba(40,40,30,.25))}
-.heart .txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:16%}
-.heart .script{font-size:2.4rem;line-height:1}
+.heart .txt{position:absolute;inset:0;padding-left:16%;padding-right:16%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:16%}
+.heart .script{font-size:clamp(1.8rem,7.5vw,2.4rem);line-height:1.1;text-align:center}
 @media(max-width:720px){.heart{margin:-30px 0 0 40px}}
 
 /* countdown */
@@ -90,10 +89,21 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 .slot svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.3}
 .slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hint{font-size:.85rem;color:var(--soft);margin-top:22px;letter-spacing:.06em}
-.btn{display:inline-block;margin-top:30px;padding:17px 38px;background:var(--khaki);color:#4f4b40;text-decoration:none;letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;font-weight:600;border-radius:2px;transition:background .3s,transform .3s}
+.btn{display:inline-block;max-width:100%;line-height:1.6;margin-top:30px;padding:16px 30px;background:var(--khaki);color:#4f4b40;text-decoration:none;letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;font-weight:600;border-radius:2px;transition:background .3s,transform .3s}
 .btn:hover{background:#cfc3a1;transform:translateY(-2px)}
 .closing .script{font-size:clamp(2rem,6vw,3rem);color:var(--olive);margin:0}
-footer{padding:28px 24px 36px;font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--soft);border-top:1px solid var(--line)}
+footer{padding:28px 24px 36px;font-size:.75rem;line-height:1.7;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);border-top:1px solid var(--line)}
+html{overflow-wrap:break-word}
+@media(max-width:600px){section{padding:68px 20px}.caps{letter-spacing:.2em;font-size:.72rem}.hero .city{letter-spacing:.2em}.count{gap:8px}.count div{min-width:66px;padding:16px 6px 12px}.count b{font-size:1.9rem}.count small{letter-spacing:.14em}.btn{letter-spacing:.14em;padding:15px 20px}.cols p{font-size:1.2rem}}
+.venue .name{font-size:clamp(2.4rem,8vw,3.8rem);color:var(--olive);margin:.2em 0 0;line-height:1.15}
+.venue address{font-style:normal;font-size:1.25rem;line-height:1.6;margin-top:10px}
+.venue .note{font-size:.95rem;color:var(--soft);margin:6px 0 0}
+.mapcard{position:relative;display:block;max-width:760px;margin:36px auto 0;border:1px solid var(--line);box-shadow:0 16px 36px var(--shadow);overflow:hidden;background:#f3ecd9;text-decoration:none;color:inherit}
+.mapcard iframe{display:block;width:100%;height:clamp(300px,55vw,440px);border:0}
+.mapcard .lbl{position:absolute;left:14px;bottom:14px;max-width:calc(100% - 28px);background:var(--card);padding:12px 16px;text-align:left;box-shadow:0 4px 12px var(--shadow);font-size:1rem;line-height:1.4}
+.mapcard .lbl b{display:block;letter-spacing:.18em;text-transform:uppercase;font-size:.7rem;font-weight:600;color:var(--soft)}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.btn.ghost{background:transparent;border:1px solid #cfc3a1}
 </style>
 <script>document.documentElement.className="js locked"</script>
 </head>
@@ -179,24 +189,9 @@ footer{padding:28px 24px 36px;font-size:.75rem;letter-spacing:.3em;text-transfor
 
 <!-- STORY -->
 <section class="story">
-  <div class="land" id="land">
-    <svg viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4eaed"/><stop offset=".55" stop-color="#f6efdd"/><stop offset="1" stop-color="#fbeed0"/></linearGradient>
-        <radialGradient id="sun" cx=".7" cy=".5" r=".5"><stop offset="0" stop-color="#fffbe9" stop-opacity=".95"/><stop offset="1" stop-color="#fffbe9" stop-opacity="0"/></radialGradient>
-        <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdd3d6"/><stop offset="1" stop-color="#e6e4dc"/></linearGradient>
-      </defs>
-      <rect width="1600" height="760" fill="url(#sky)"/><rect width="1600" height="760" fill="url(#sun)"/>
-      <g fill="#fff" opacity=".8" filter="url(#bl)"><ellipse cx="330" cy="150" rx="230" ry="26"/><ellipse cx="1180" cy="110" rx="260" ry="22"/><ellipse cx="760" cy="215" rx="180" ry="16"/></g>
-      <path d="M0 400 L130 330 L250 385 L420 290 L560 380 L700 330 L900 410 L1080 320 L1250 390 L1420 300 L1600 380 V560 H0Z" fill="url(#m1)" opacity=".85"/>
-      <path d="M0 450 C250 395 420 440 640 420 C900 396 1100 440 1600 410 V600 H0Z" fill="#e9e1c6"/>
-      <path d="M0 520 C300 470 560 520 820 495 C1100 468 1350 520 1600 490 V760 H0Z" fill="#e3d6ad"/>
-      <path d="M0 610 C400 570 800 620 1200 590 C1400 575 1520 590 1600 585 V760 H0Z" fill="#dccb98"/>
-      <g id="blades" fill="none" stroke-linecap="round"></g>
-    </svg>
-  </div>
+  <div class="land" id="land" style="background:url('image/champagne.jpg') center/cover no-repeat #f3ecd9"></div>
   <div class="veil"></div>
-  <button class="usephoto" id="usephoto">Use my own photo</button>
+  
   <svg class="flower" style="left:-26px;bottom:-30px;width:min(170px,30vw);transform:rotate(10deg);z-index:2"><use href="#calla"/></svg>
   <svg class="flower" style="right:-30px;bottom:-24px;width:min(180px,32vw);transform:rotate(-10deg);z-index:2;animation-delay:-3s"><use href="#calla"/></svg>
   <div class="inner fade">
@@ -234,7 +229,24 @@ footer{padding:28px 24px 36px;font-size:.75rem;letter-spacing:.3em;text-transfor
   </div>
 </section>
 
-<section class="alt">
+<section class="alt venue">
+  <div class="inner fade">
+    <div class="caps">The Venue</div>
+    <div class="script name">Mar Hall</div>
+    <div class="orn"><i></i></div>
+    <address>Earl of Mar Estate<br>Bishopton, Glasgow<br>PA7 5NW</address>
+    <p class="note">About 10 minutes from Glasgow Airport</p>
+    <div class="mapcard"><iframe title="Mar Hall on Google Maps" src="https://www.google.com/maps?q=Mar+Hall,+Earl+of+Mar+Estate,+Bishopton+PA7+5NW&amp;z=14&amp;output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="btns" style="margin-top:26px">
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Mar+Hall+Earl+of+Mar+Estate+Bishopton+PA7+5NW">View on Google Maps</a>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mar+Hall+Earl+of+Mar+Estate+Bishopton+PA7+5NW">Get directions</a>
+    </div>
+  </div>
+  <svg class="flower" style="left:-20px;bottom:-30px;width:min(140px,26vw);transform:rotate(8deg)"><use href="#calla"/></svg>
+  <svg class="flower" style="right:10px;bottom:-10px;width:min(70px,13vw)"><use href="#gyp"/></svg>
+</section>
+
+<section>
   <div class="inner fade">
     <div class="caps">Moments together</div>
     <div class="gallery">
@@ -284,30 +296,17 @@ tick(); setInterval(tick, 1000);
 var cities = ["city","city2","city3"].map(function(i){ return document.getElementById(i); });
 cities.forEach(function(el){ el.addEventListener("input", function(){ cities.forEach(function(o){ if(o !== el) o.textContent = el.textContent; }); }); });
 
-// grassland blades
-(function(){
-  var seed = 7, r = function(){ seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
-  var cols = ["#efe3b8","#e0cf94","#f6efd3","#d3bf84"], ds = ["","","",""], i, y, x, h, c, lean;
-  for(i = 0; i < 1500; i++){
-    y = 500 + Math.pow(r(), .8) * 260; x = r() * 1640 - 20;
-    h = 14 + (y - 500) / 260 * 70 * (.5 + r()); lean = (r() - .5) * 18; c = Math.floor(r() * 4);
-    ds[c] += "M" + x.toFixed(0) + " " + y.toFixed(0) + "q" + (lean / 2).toFixed(0) + " " + (-h / 2).toFixed(0) + " " + lean.toFixed(0) + " " + (-h).toFixed(0);
-  }
-  var g = document.getElementById("blades");
-  cols.forEach(function(col, k){ var p = document.createElementNS("http://www.w3.org/2000/svg","path"); p.setAttribute("d", ds[k]); p.setAttribute("stroke", col); p.setAttribute("stroke-width", k % 2 ? 1.6 : 1.1); g.appendChild(p); });
-})();
+
 
 // photos
 var file = document.getElementById("file"), current = null;
 document.querySelectorAll("[data-slot]").forEach(function(el){ el.addEventListener("click", function(){ current = el; file.click(); }); });
-document.getElementById("usephoto").addEventListener("click", function(){ current = this; file.click(); });
 file.addEventListener("change", function(){
   var f = file.files[0]; if(!f || !current) return;
   var rd = new FileReader();
   rd.onload = function(){
     var img = new Image(); img.alt = "Photo"; img.src = rd.result;
-    if(current.id === "usephoto"){ var l = document.getElementById("land"); l.innerHTML = ""; l.appendChild(img); }
-    else { current.innerHTML = ""; current.appendChild(img); }
+    current.innerHTML = ""; current.appendChild(img);
     file.value = "";
   };
   rd.readAsDataURL(f);
