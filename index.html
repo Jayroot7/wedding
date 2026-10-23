@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="image/favicon.png">
 <title>Heather &amp; Jack · We’re Getting Married</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
@@ -104,6 +105,9 @@ html{overflow-wrap:break-word}
 .mapcard .lbl b{display:block;letter-spacing:.18em;text-transform:uppercase;font-size:.7rem;font-weight:600;color:var(--soft)}
 .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
 .btn.ghost{background:transparent;border:1px solid #cfc3a1}
+.div{display:flex;align-items:center;justify-content:center;gap:10px;margin:28px auto;max-width:560px}
+.div img{height:48px;width:auto;max-width:32%;object-fit:contain}.div .c{height:62px;max-width:34%}.div .r{transform:scaleX(-1)}
+.bloom{display:block;margin:44px auto 0;width:min(480px,88%);height:auto}
 </style>
 <script>document.documentElement.className="js locked"</script>
 </head>
@@ -181,7 +185,7 @@ html{overflow-wrap:break-word}
     <div class="caps">Save the date</div>
     <div class="script names edit" contenteditable="true" spellcheck="false">Heather &amp; Jack</div>
     <h1 class="script">We’re getting Married</h1>
-    <div class="orn"><i></i></div>
+    <div class="div" aria-hidden="true"><img src="image/divider-leaves.png" alt="" onerror="this.style.display='none'"><img class="c" src="image/divider-flower.png" alt="" onerror="this.style.display='none'"><img class="r" src="image/divider-leaves.png" alt="" onerror="this.style.display='none'"></div>
     <p class="city edit" id="city" contenteditable="true" spellcheck="false">Glasgow</p>
     <div class="caps date edit" contenteditable="true" spellcheck="false">Saturday, 21 August 2027</div>
   </div>
@@ -189,7 +193,7 @@ html{overflow-wrap:break-word}
 
 <!-- STORY -->
 <section class="story">
-  <div class="land" id="land" style="background:url('image/champagne.jpg') center/cover no-repeat #f3ecd9"></div>
+  <div class="land" id="land" style="background:url('image/jeremy-wong-weddings-464ps_nOflw-unsplash.jpg') center/cover no-repeat #f3ecd9"></div>
   <div class="veil"></div>
   
   <svg class="flower" style="left:-26px;bottom:-30px;width:min(170px,30vw);transform:rotate(10deg);z-index:2"><use href="#calla"/></svg>
@@ -217,7 +221,7 @@ html{overflow-wrap:break-word}
 <section>
   <div class="inner fade">
     <div class="caps">Counting down the days</div>
-    <div class="orn"><i></i></div>
+    <div class="div" aria-hidden="true"><img src="image/divider-leaves.png" alt="" onerror="this.style.display='none'"><img class="c" src="image/divider-flower.png" alt="" onerror="this.style.display='none'"><img class="r" src="image/divider-leaves.png" alt="" onerror="this.style.display='none'"></div>
     <div class="count" aria-label="Countdown to the wedding">
       <div><b id="d">--</b><small>Days</small></div><div><b id="h">--</b><small>Hours</small></div><div><b id="m">--</b><small>Minutes</small></div><div><b id="s">--</b><small>Seconds</small></div>
     </div>
@@ -233,14 +237,14 @@ html{overflow-wrap:break-word}
   <div class="inner fade">
     <div class="caps">The Venue</div>
     <div class="script name">Mar Hall</div>
-    <div class="orn"><i></i></div>
+    <div class="div" aria-hidden="true"><img src="image/divider-leaves.png" alt="" onerror="this.style.display='none'"><img class="c" src="image/divider-flower.png" alt="" onerror="this.style.display='none'"><img class="r" src="image/divider-leaves.png" alt="" onerror="this.style.display='none'"></div>
     <address>Earl of Mar Estate<br>Bishopton, Glasgow<br>PA7 5NW</address>
     <p class="note">About 10 minutes from Glasgow Airport</p>
-    <div class="mapcard"><iframe title="Mar Hall on Google Maps" src="https://www.google.com/maps?q=Mar+Hall,+Earl+of+Mar+Estate,+Bishopton+PA7+5NW&amp;z=14&amp;output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-    <div class="btns" style="margin-top:26px">
-      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Mar+Hall+Earl+of+Mar+Estate+Bishopton+PA7+5NW">View on Google Maps</a>
-      <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mar+Hall+Earl+of+Mar+Estate+Bishopton+PA7+5NW">Get directions</a>
+    <div class="btns" style="margin-top:30px">
+      <a class="btn" id="gcal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Heather%20%26%20Jack%E2%80%99s%20Wedding&amp;dates=20270821T140000/20270821T230000&amp;ctz=Europe/London&amp;details=We%E2%80%99re%20getting%20married%21%20Formal%20invitation%20to%20follow.&amp;location=Mar%20Hall%2C%20Earl%20of%20Mar%20Estate%2C%20Bishopton%20PA7%205NW">Add to Google Calendar</a>
+      <a class="btn ghost" id="ics" href="#">Apple / Outlook calendar</a>
     </div>
+    <p class="note" style="margin-top:14px">Saturday 21 August 2027 · 2:00 pm</p>
   </div>
   <svg class="flower" style="left:-20px;bottom:-30px;width:min(140px,26vw);transform:rotate(8deg)"><use href="#calla"/></svg>
   <svg class="flower" style="right:10px;bottom:-10px;width:min(70px,13vw)"><use href="#gyp"/></svg>
@@ -262,6 +266,7 @@ html{overflow-wrap:break-word}
   <div class="inner fade">
     <p class="script">We look forward to celebrating together</p>
     <a class="btn" href="mailto:you@example.com?subject=My%20address">Kindly share your address here</a>
+    <img class="bloom" src="image/flowers-and-leaves.png" alt="" onerror="this.style.display='none'">
   </div>
 </section>
 <footer class="edit" contenteditable="true" spellcheck="false">Heather &amp; Jack · 21.08.2027</footer>
@@ -310,6 +315,17 @@ file.addEventListener("change", function(){
     file.value = "";
   };
   rd.readAsDataURL(f);
+});
+
+
+// add to calendar (.ics for Apple / Outlook)
+document.getElementById("ics").addEventListener("click", function(e){
+  e.preventDefault();
+  var L = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Wedding Invitation//EN","BEGIN:VEVENT","UID:heather-jack-20270821@wedding","DTSTAMP:20261023T000000Z","DTSTART:20270821T140000","DTEND:20270821T230000","SUMMARY:Heather & Jack\u2019s Wedding","LOCATION:Mar Hall\\, Earl of Mar Estate\\, Bishopton PA7 5NW","DESCRIPTION:We\u2019re getting married! Formal invitation to follow.","BEGIN:VALARM","TRIGGER:-P7D","ACTION:DISPLAY","DESCRIPTION:One week to go","END:VALARM","END:VEVENT","END:VCALENDAR"];
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([L.join("\r\n")], {type:"text/calendar"}));
+  a.download = "heather-and-jack-wedding.ics";
+  document.body.appendChild(a); a.click(); a.remove();
 });
 
 // scroll reveal
