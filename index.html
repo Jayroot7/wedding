@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>We’re Getting Married</title>
+<title>Heather &amp; Jack · We’re Getting Married</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fffdf7;--alt:#faf5e8;--card:#fffefb;--ink:#2a2a27;--soft:#7a766d;--line:#e9e1cd;--slot:#f2ebd9;--khaki:#dcd2b8;--olive:#7d7766;--heart:#f5eedc;--shadow:rgba(60,55,40,.10);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{--bg:#fffdf7;--alt:#faf5e8;--card:#fffefb;--ink:#2a2a27;--soft:#7a766d;--line:#e9e1cd;--slot:#f2ebd9;--khaki:#dcd2b8;--olive:#7d7766;--heart:#f5eedc;--shadow:rgba(60,55,40,.12);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}html.locked,html.locked body{overflow:hidden;height:100%}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;text-align:center;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 .script{font-family:"Pinyon Script","Snell Roundhand",cursive;font-weight:400}
@@ -16,14 +16,34 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cormorant Garam
 section{position:relative;padding:88px 24px;overflow:hidden}
 .inner{position:relative;z-index:2;max-width:980px;margin:0 auto}
 .alt{background:var(--alt)}
-.orn{display:flex;align-items:center;justify-content:center;gap:14px;margin:26px auto;color:var(--khaki);max-width:260px}
+.orn{display:flex;align-items:center;justify-content:center;gap:14px;margin:26px auto;color:#cfc3a1;max-width:260px}
 .orn::before,.orn::after{content:"";height:1px;flex:1;background:currentColor}
 .orn i{width:7px;height:7px;border:1px solid currentColor;transform:rotate(45deg)}
-.flower{position:absolute;pointer-events:none;transform-origin:50% 100%;animation:sway 8s ease-in-out infinite alternate;z-index:1}
+.flower{position:absolute;pointer-events:none;transform-origin:50% 100%;animation:sway 8s ease-in-out infinite alternate;z-index:1;filter:drop-shadow(0 6px 8px rgba(60,55,40,.14))}
 @keyframes sway{to{transform:rotate(2.5deg)}}
 .fade{opacity:0;transform:translateY(18px);transition:opacity 1s ease,transform 1s ease}
-.fade.in,html:not(.js) .fade{opacity:1;transform:none}
+.fade.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.flower{animation:none}.fade{opacity:1;transform:none;transition:none}}
+
+/* ENVELOPE */
+.env{position:fixed;inset:0;z-index:100;perspective:1600px;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#fbf4e3 0%,#f6edd8 70%,#efe4cb 100%);transition:opacity .9s ease 1.5s,transform 1.2s cubic-bezier(.6,0,.3,1) 1.4s}
+.env.gone{opacity:0;transform:translateY(8%);pointer-events:none}
+.env .folds{position:absolute;inset:0;width:100%;height:100%}
+.flap{position:absolute;top:0;left:0;right:0;height:64%;transform-origin:50% 0;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.55,0,.25,1);z-index:3}
+.env.open .flap{transform:rotateX(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 12px 14px rgba(70,65,50,.22))}
+.face.back{transform:rotateX(180deg)}
+.env .to{position:absolute;top:11%;left:0;right:0}
+.env .to .caps{font-size:clamp(.7rem,1.6vw,.95rem);color:#5d594f;letter-spacing:.14em}
+.env .to .script{font-size:clamp(2.2rem,5.4vw,3.6rem);color:#34332f;margin-top:.1em}
+.seal{position:absolute;left:50%;top:93%;width:clamp(74px,11vw,112px);aspect-ratio:.78;transform:translate(-50%,-50%);border:0;padding:0;cursor:pointer;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fffaf0,#f1e8d2 62%,#e2d8be);box-shadow:inset 0 2px 3px #fff,inset 0 -6px 10px rgba(110,105,90,.28),0 8px 14px rgba(70,65,50,.3);animation:pulse 3s ease-in-out infinite}
+.seal::before{content:"";position:absolute;inset:7%;border-radius:50%;border:1.5px solid rgba(120,115,98,.38);box-shadow:inset 0 1px 1px #fff}
+.seal svg{position:absolute;inset:12% 18%;width:64%;height:76%;overflow:visible}
+@keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.04)}}
+.openbtn{position:absolute;bottom:8%;left:0;right:0;background:none;border:0;font:inherit;cursor:pointer;color:#4d4a42;letter-spacing:.16em;text-transform:uppercase;font-size:clamp(.72rem,1.5vw,.9rem)}
+.openbtn span{border-bottom:1px solid rgba(77,74,66,.35);padding-bottom:3px}
+@media(prefers-reduced-motion:reduce){.seal{animation:none}.flap,.env{transition-duration:.01s;transition-delay:0s}}
 
 /* hero */
 .hero{min-height:92vh;display:flex;align-items:center;padding-top:72px}
@@ -32,15 +52,21 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 .hero .city{font-size:clamp(1.2rem,3vw,1.6rem);letter-spacing:.32em;text-transform:uppercase;font-weight:500;margin:0}
 .hero .date{margin-top:.6em}
 
-/* collage */
-.collage{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
-.polaroid{position:relative;width:min(280px,78vw);background:var(--card);padding:14px 14px 46px;box-shadow:0 14px 34px var(--shadow);transform:rotate(-2.5deg)}
+/* story */
+.story{padding:100px 24px 120px;min-height:760px}
+.land{position:absolute;inset:0;z-index:0}
+.land svg,.land img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.veil{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(255,253,247,.7),rgba(255,253,247,.05) 38%,rgba(255,253,247,.0) 70%,rgba(255,253,247,.35))}
+.story .caps{color:#4f4c44}
+.usephoto{position:absolute;z-index:3;right:14px;top:14px;background:rgba(255,254,251,.85);border:1px solid var(--line);padding:8px 14px;font:inherit;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);cursor:pointer}
+.collage{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
+.polaroid{position:relative;width:min(280px,78vw);background:var(--card);padding:14px 14px 46px;box-shadow:0 18px 40px rgba(40,40,30,.25);transform:rotate(-2.5deg)}
 .polaroid .slot{aspect-ratio:1/1.08}
-.polaroid .stamp{position:absolute;top:-24px;left:4px;font-size:.8rem;letter-spacing:.18em;color:var(--soft)}
+.polaroid .stamp{position:absolute;top:-24px;left:4px;font-size:.8rem;letter-spacing:.18em;color:#4f4c44}
 .tag{position:absolute;right:-40px;top:-34px;width:92px;padding:18px 8px 14px;background:var(--khaki);color:#4f4b40;border-radius:8px 8px 26px 26px;font-size:1.05rem;line-height:1.1;transform:rotate(8deg);box-shadow:0 6px 14px var(--shadow)}
-.tag::before{content:"";position:absolute;top:-16px;left:50%;width:24px;height:24px;margin-left:-12px;border:2px solid var(--olive);border-radius:50%}
+.tag::before{content:"";position:absolute;top:-16px;left:50%;width:24px;height:24px;margin-left:-12px;border:2px solid #b9ad8a;border-radius:50%}
 .heart{position:relative;width:min(310px,82vw);margin:-34px 0 0 -40px;transform:rotate(-3deg)}
-.heart svg{width:100%;display:block;filter:drop-shadow(0 10px 16px var(--shadow))}
+.heart svg{width:100%;display:block;filter:drop-shadow(0 12px 18px rgba(40,40,30,.25))}
 .heart .txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:16%}
 .heart .script{font-size:2.4rem;line-height:1}
 @media(max-width:720px){.heart{margin:-30px 0 0 40px}}
@@ -50,85 +76,134 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 .count div{min-width:78px;padding:20px 8px 14px;border:1px solid var(--line);background:var(--card)}
 .count b{display:block;font-size:2.4rem;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
 .count small{display:block;margin-top:8px;letter-spacing:.25em;text-transform:uppercase;font-size:.62rem;color:var(--soft)}
-
-/* details */
-.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px}
-.cols>div{padding:12px 20px}
-.cols>div+div{border-left:1px solid var(--line)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);margin-top:40px}
+.cols>div{padding:12px 20px}.cols>div+div{border-left:1px solid var(--line)}
 .cols h3{font-weight:500;font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--olive);margin:0 0 12px}
 .cols p{margin:0;font-size:1.3rem;line-height:1.4}
 @media(max-width:720px){.cols{grid-template-columns:1fr}.cols>div+div{border-left:0;border-top:1px solid var(--line);margin-top:12px;padding-top:24px}}
 
-/* gallery */
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
 .gallery .slot{aspect-ratio:3/4;border-radius:999px 999px 6px 6px}
 .gallery .slot:nth-child(even){margin-top:28px}
 @media(max-width:720px){.gallery{grid-template-columns:repeat(2,1fr)}}
-.slot{position:relative;overflow:hidden;cursor:pointer;background:var(--slot);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--soft);font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;transition:filter .3s}
-.slot:hover{filter:brightness(.96)}
+.slot{position:relative;overflow:hidden;cursor:pointer;background:var(--slot);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--soft);font-size:.7rem;letter-spacing:.25em;text-transform:uppercase}
 .slot svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.3}
 .slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hint{font-size:.85rem;color:var(--soft);margin-top:22px;letter-spacing:.06em}
-
-/* closing */
 .btn{display:inline-block;margin-top:30px;padding:17px 38px;background:var(--khaki);color:#4f4b40;text-decoration:none;letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;font-weight:600;border-radius:2px;transition:background .3s,transform .3s}
 .btn:hover{background:#cfc3a1;transform:translateY(-2px)}
 .closing .script{font-size:clamp(2rem,6vw,3rem);color:var(--olive);margin:0}
 footer{padding:28px 24px 36px;font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--soft);border-top:1px solid var(--line)}
 </style>
-<script>document.documentElement.className="js"</script>
+<script>document.documentElement.className="js locked"</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
 <defs>
-<linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f1e3"/><stop offset="1" stop-color="#dcd5c0"/></linearGradient>
-<linearGradient id="pg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#f6f3ea"/><stop offset="1" stop-color="#e3dfd0"/></linearGradient>
+<linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8f3e6"/><stop offset="1" stop-color="#d6cfb9"/></linearGradient>
+<radialGradient id="sp" cx=".35" cy=".3" r=".95"><stop offset="0" stop-color="#fffffc"/><stop offset=".65" stop-color="#f8f2e3"/><stop offset="1" stop-color="#e2d9bf"/></radialGradient>
+<linearGradient id="sx" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f3e8bb"/><stop offset="1" stop-color="#dccb90"/></linearGradient>
+<filter id="bl"><feGaussianBlur stdDeviation="14"/></filter>
 <symbol id="calla" viewBox="0 0 120 300">
-<path d="M62 300 C58 220 66 150 60 96" stroke="#dcd5c0" stroke-width="5" fill="none" stroke-linecap="round"/>
-<path d="M60 230 C22 222 4 180 8 138 C38 152 56 188 60 230Z" fill="url(#lg)"/>
-<path d="M60 200 C98 192 116 150 112 112 C82 128 64 160 60 200Z" fill="url(#lg)" opacity=".92"/>
-<path d="M60 112 C14 108 8 50 38 10 C48 2 66 2 76 12 C104 50 102 108 60 112Z" fill="url(#pg)" stroke="#e6dfcb" stroke-width="1.5"/>
-<path d="M60 111 C54 82 60 52 68 22" stroke="#e6dfcb" stroke-width="1.5" fill="none"/>
-<path d="M44 20 C60 40 80 40 78 14" stroke="#e6e2d2" stroke-width="1.2" fill="none"/>
-<ellipse cx="63" cy="64" rx="5" ry="22" fill="#eadfc2"/>
+<path d="M62 300 C58 220 68 150 61 112" stroke="#d3ccb4" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M61 240 C20 232 2 186 6 140 C38 156 58 196 61 240Z" fill="url(#lg)" stroke="#d6cfb9" stroke-width=".8"/>
+<path d="M61 240 C40 200 22 170 9 146" stroke="#e8e2d0" stroke-width="1" fill="none"/>
+<path d="M62 206 C100 198 118 154 113 114 C84 130 66 164 62 206Z" fill="url(#lg)" stroke="#d6cfb9" stroke-width=".8"/>
+<path d="M60 134 C20 128 4 72 28 28 C38 12 50 6 62 2 C76 8 100 30 102 62 C104 100 92 130 60 134Z" fill="url(#sp)" stroke="#e1d8bf" stroke-width="1.2"/>
+<path d="M60 132 C38 112 34 70 50 32 C62 60 70 98 60 132Z" fill="#e7dec6" opacity=".75"/>
+<path d="M62 3 C82 20 98 44 100 72 C90 50 76 32 62 3Z" fill="#fffffc" opacity=".85"/>
+<path d="M30 40 C36 70 44 104 60 130" stroke="#efe8d3" stroke-width="1.4" fill="none"/>
+<path d="M58 118 C55 88 58 62 63 40 C68 62 70 90 65 118Z" fill="url(#sx)"/>
+<ellipse cx="63" cy="42" rx="3.4" ry="7" fill="#e8d9a2"/>
 </symbol>
-<symbol id="blossom" viewBox="0 0 100 100">
-<g fill="#fffdf6" stroke="#e6dfcb" stroke-width="1.3"><ellipse cx="50" cy="25" rx="14" ry="23"/><ellipse cx="50" cy="25" rx="14" ry="23" transform="rotate(72 50 50)"/><ellipse cx="50" cy="25" rx="14" ry="23" transform="rotate(144 50 50)"/><ellipse cx="50" cy="25" rx="14" ry="23" transform="rotate(216 50 50)"/><ellipse cx="50" cy="25" rx="14" ry="23" transform="rotate(288 50 50)"/></g>
-<circle cx="50" cy="50" r="8" fill="#eadfc2"/><g fill="#d6cba9"><circle cx="44" cy="46" r="1.6"/><circle cx="56" cy="46" r="1.6"/><circle cx="50" cy="56" r="1.6"/></g>
+<symbol id="rose" viewBox="0 0 100 100">
+<g fill="url(#sp)" stroke="#e1d8bf" stroke-width=".8">
+<ellipse cx="50" cy="26" rx="19" ry="24"/><ellipse cx="50" cy="26" rx="19" ry="24" transform="rotate(51 50 50)"/><ellipse cx="50" cy="26" rx="19" ry="24" transform="rotate(103 50 50)"/><ellipse cx="50" cy="26" rx="19" ry="24" transform="rotate(154 50 50)"/><ellipse cx="50" cy="26" rx="19" ry="24" transform="rotate(206 50 50)"/><ellipse cx="50" cy="26" rx="19" ry="24" transform="rotate(257 50 50)"/><ellipse cx="50" cy="26" rx="19" ry="24" transform="rotate(309 50 50)"/>
+<ellipse cx="50" cy="35" rx="14" ry="17" fill="#fcf8ec" transform="rotate(20 50 50)"/><ellipse cx="50" cy="35" rx="14" ry="17" fill="#fcf8ec" transform="rotate(92 50 50)"/><ellipse cx="50" cy="35" rx="14" ry="17" fill="#fcf8ec" transform="rotate(164 50 50)"/><ellipse cx="50" cy="35" rx="14" ry="17" fill="#fcf8ec" transform="rotate(236 50 50)"/><ellipse cx="50" cy="35" rx="14" ry="17" fill="#fcf8ec" transform="rotate(308 50 50)"/>
+</g>
+<circle cx="50" cy="50" r="13" fill="#f3ebd5" stroke="#e1d8bf" stroke-width=".8"/>
+<path d="M50 50 m-2 0 a2 2 0 1 1 4 0 a5 5 0 1 1 -9 0 a8 8 0 1 1 15 -1" stroke="#d9cfb2" stroke-width="1.2" fill="none"/>
 </symbol>
-<symbol id="sprig" viewBox="0 0 70 240">
-<path d="M35 240 C32 160 38 80 35 8" stroke="#dcd5c0" stroke-width="3" fill="none"/>
-<g fill="url(#lg)"><ellipse cx="20" cy="180" rx="15" ry="6.5" transform="rotate(-35 20 180)"/><ellipse cx="50" cy="146" rx="15" ry="6.5" transform="rotate(35 50 146)"/><ellipse cx="20" cy="108" rx="15" ry="6.5" transform="rotate(-35 20 108)"/><ellipse cx="50" cy="74" rx="14" ry="6" transform="rotate(35 50 74)"/><ellipse cx="24" cy="40" rx="12" ry="5.5" transform="rotate(-35 24 40)"/></g>
-<circle cx="35" cy="8" r="5" fill="#948e80"/>
+<symbol id="gyp" viewBox="0 0 100 240">
+<g stroke="#d6cfb9" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M50 240 C48 170 52 110 50 60"/><path d="M50 170 C30 150 22 120 18 90"/><path d="M50 140 C70 120 80 96 84 70"/><path d="M50 110 C36 90 32 66 34 40"/><path d="M52 90 C66 70 70 50 66 24"/><path d="M50 60 C46 44 48 28 50 12"/></g>
+<g fill="#fffefb" stroke="#e6dfcb" stroke-width=".8"><circle cx="18" cy="88" r="5"/><circle cx="12" cy="100" r="3.5"/><circle cx="24" cy="104" r="3.5"/><circle cx="84" cy="68" r="5"/><circle cx="92" cy="80" r="3.5"/><circle cx="78" cy="84" r="3.5"/><circle cx="34" cy="38" r="5"/><circle cx="26" cy="50" r="3.5"/><circle cx="42" cy="48" r="3.5"/><circle cx="66" cy="22" r="5"/><circle cx="74" cy="34" r="3.5"/><circle cx="58" cy="34" r="3.5"/><circle cx="50" cy="10" r="5"/><circle cx="42" cy="20" r="3.5"/><circle cx="58" cy="18" r="3"/><circle cx="30" cy="124" r="3.5"/><circle cx="70" cy="122" r="3.5"/><circle cx="50" cy="56" r="4"/><circle cx="20" cy="120" r="3"/><circle cx="80" cy="104" r="3"/></g>
 </symbol>
 <symbol id="cam" viewBox="0 0 24 24"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+<symbol id="flapP" viewBox="0 0 1000 560"><path d="M0 0H1000V250C1000 330 930 362 870 332C810 302 772 332 742 392C702 470 604 522 500 522C396 522 298 470 258 392C228 332 190 302 130 332C70 362 0 330 0 250Z"/></symbol>
 </defs>
 </svg>
 
+<!-- ENVELOPE -->
+<div class="env" id="env">
+  <svg class="folds" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 100 L50 48 L100 100" fill="none" stroke="rgba(90,88,78,.13)" stroke-width=".25" vector-effect="non-scaling-stroke"/>
+    <path d="M0 40 L50 72 L100 40" fill="none" stroke="rgba(90,88,78,.08)" stroke-width=".25" vector-effect="non-scaling-stroke"/>
+    <path d="M0 100 L50 48 L100 100Z" fill="rgba(255,255,255,.18)"/>
+  </svg>
+  <div class="flap">
+    <div class="face">
+      <svg viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf5e6"/><stop offset="1" stop-color="#f4ead3"/></linearGradient></defs>
+        <use href="#flapP" fill="url(#fg)"/>
+        <use href="#flapP" fill="none" stroke="rgba(120,115,98,.2)" stroke-width="1.5" transform="translate(500 0) scale(.955 .93) translate(-500 8)" vector-effect="non-scaling-stroke"/>
+        <use href="#flapP" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1" transform="translate(500 0) scale(.955 .93) translate(-500 11)" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <div class="to"><div class="caps">A Love Letter From</div><div class="script">Heather &amp; Jack</div></div>
+      <button class="seal" id="seal" aria-label="Open the invitation">
+        <svg viewBox="0 0 60 80"><g opacity=".9" fill="none" stroke="#c9bf9f" stroke-width="1.2"><path d="M30 40 C29 30 30 22 32 14"/><path d="M30 18 C20 17 17 8 22 3 C26 1 32 2 34 5 C40 10 40 17 30 18Z" fill="#f6f0df" stroke="#c4b994"/></g><text x="30" y="62" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#cdc3a3" stroke="#b9ae8c" stroke-width=".4" letter-spacing="1.5">H&amp;J</text></svg>
+      </button>
+    </div>
+    <div class="face back">
+      <svg viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true"><use href="#flapP" fill="#efe5cd"/></svg>
+    </div>
+  </div>
+  <button class="openbtn" id="openbtn"><span>Open the invitation</span></button>
+</div>
+
 <!-- HERO -->
 <section class="hero">
-  <svg class="flower" style="left:-30px;bottom:-20px;width:min(190px,34vw);transform:rotate(8deg)"><use href="#calla"/></svg>
-  <svg class="flower" style="left:min(150px,26vw);bottom:-10px;width:min(80px,14vw);animation-delay:-3s"><use href="#sprig"/></svg>
-  <svg class="flower" style="right:-34px;bottom:-24px;width:min(210px,38vw);transform:rotate(-9deg);animation-delay:-2s"><use href="#calla"/></svg>
-  <svg class="flower" style="right:min(190px,32vw);top:60px;width:min(70px,12vw)"><use href="#blossom"/></svg>
-  <svg class="flower" style="left:min(70px,10vw);top:70px;width:min(56px,10vw);animation-delay:-4s"><use href="#blossom"/></svg>
+  <svg class="flower" style="left:-30px;bottom:-20px;width:min(200px,36vw);transform:rotate(8deg)"><use href="#calla"/></svg>
+  <svg class="flower" style="left:min(150px,26vw);bottom:-10px;width:min(90px,15vw);animation-delay:-3s"><use href="#gyp"/></svg>
+  <svg class="flower" style="right:-34px;bottom:-24px;width:min(220px,40vw);transform:rotate(-9deg);animation-delay:-2s"><use href="#calla"/></svg>
+  <svg class="flower" style="right:min(190px,32vw);top:60px;width:min(78px,13vw)"><use href="#rose"/></svg>
+  <svg class="flower" style="left:min(70px,10vw);top:70px;width:min(62px,11vw);animation-delay:-4s"><use href="#rose"/></svg>
   <div class="inner fade">
     <div class="caps">Save the date</div>
-    <div class="script names edit" id="names" contenteditable="true" spellcheck="false">Heather &amp; Jack</div>
+    <div class="script names edit" contenteditable="true" spellcheck="false">Heather &amp; Jack</div>
     <h1 class="script">We’re getting Married</h1>
     <div class="orn"><i></i></div>
     <p class="city edit" id="city" contenteditable="true" spellcheck="false">Glasgow</p>
-    <div class="caps date edit" id="longdate" contenteditable="true" spellcheck="false">Saturday, 21 August 2027</div>
+    <div class="caps date edit" contenteditable="true" spellcheck="false">Saturday, 21 August 2027</div>
   </div>
 </section>
 
-<!-- COLLAGE -->
-<section class="alt">
+<!-- STORY -->
+<section class="story">
+  <div class="land" id="land">
+    <svg viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4eaed"/><stop offset=".55" stop-color="#f6efdd"/><stop offset="1" stop-color="#fbeed0"/></linearGradient>
+        <radialGradient id="sun" cx=".7" cy=".5" r=".5"><stop offset="0" stop-color="#fffbe9" stop-opacity=".95"/><stop offset="1" stop-color="#fffbe9" stop-opacity="0"/></radialGradient>
+        <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdd3d6"/><stop offset="1" stop-color="#e6e4dc"/></linearGradient>
+      </defs>
+      <rect width="1600" height="760" fill="url(#sky)"/><rect width="1600" height="760" fill="url(#sun)"/>
+      <g fill="#fff" opacity=".8" filter="url(#bl)"><ellipse cx="330" cy="150" rx="230" ry="26"/><ellipse cx="1180" cy="110" rx="260" ry="22"/><ellipse cx="760" cy="215" rx="180" ry="16"/></g>
+      <path d="M0 400 L130 330 L250 385 L420 290 L560 380 L700 330 L900 410 L1080 320 L1250 390 L1420 300 L1600 380 V560 H0Z" fill="url(#m1)" opacity=".85"/>
+      <path d="M0 450 C250 395 420 440 640 420 C900 396 1100 440 1600 410 V600 H0Z" fill="#e9e1c6"/>
+      <path d="M0 520 C300 470 560 520 820 495 C1100 468 1350 520 1600 490 V760 H0Z" fill="#e3d6ad"/>
+      <path d="M0 610 C400 570 800 620 1200 590 C1400 575 1520 590 1600 585 V760 H0Z" fill="#dccb98"/>
+      <g id="blades" fill="none" stroke-linecap="round"></g>
+    </svg>
+  </div>
+  <div class="veil"></div>
+  <button class="usephoto" id="usephoto">Use my own photo</button>
+  <svg class="flower" style="left:-26px;bottom:-30px;width:min(170px,30vw);transform:rotate(10deg);z-index:2"><use href="#calla"/></svg>
+  <svg class="flower" style="right:-30px;bottom:-24px;width:min(180px,32vw);transform:rotate(-10deg);z-index:2;animation-delay:-3s"><use href="#calla"/></svg>
   <div class="inner fade">
     <div class="caps">Our story begins</div>
     <div class="collage" style="margin-top:56px">
       <div class="polaroid">
-        <span class="stamp edit" contenteditable="true" spellcheck="false">27.07.2027</span>
+        <span class="stamp edit" contenteditable="true" spellcheck="false">21.08.2027</span>
         <div class="slot" data-slot><svg><use href="#cam"/></svg>Add photo</div>
         <div class="tag script edit" contenteditable="true" spellcheck="false">Future Mr. and Mrs.</div>
       </div>
@@ -141,8 +216,6 @@ footer{padding:28px 24px 36px;font-size:.75rem;letter-spacing:.3em;text-transfor
       </div>
     </div>
   </div>
-  <svg class="flower" style="left:-26px;bottom:-30px;width:min(150px,28vw);transform:rotate(10deg)"><use href="#calla"/></svg>
-  <svg class="flower" style="right:-10px;top:30px;width:min(70px,14vw);animation-delay:-3s"><use href="#blossom"/></svg>
 </section>
 
 <!-- COUNTDOWN -->
@@ -151,10 +224,7 @@ footer{padding:28px 24px 36px;font-size:.75rem;letter-spacing:.3em;text-transfor
     <div class="caps">Counting down the days</div>
     <div class="orn"><i></i></div>
     <div class="count" aria-label="Countdown to the wedding">
-      <div><b id="d">--</b><small>Days</small></div>
-      <div><b id="h">--</b><small>Hours</small></div>
-      <div><b id="m">--</b><small>Minutes</small></div>
-      <div><b id="s">--</b><small>Seconds</small></div>
+      <div><b id="d">--</b><small>Days</small></div><div><b id="h">--</b><small>Hours</small></div><div><b id="m">--</b><small>Minutes</small></div><div><b id="s">--</b><small>Seconds</small></div>
     </div>
     <div class="cols">
       <div><h3>The Date</h3><p class="edit" contenteditable="true" spellcheck="false">Saturday<br>21 August 2027</p></div>
@@ -164,35 +234,42 @@ footer{padding:28px 24px 36px;font-size:.75rem;letter-spacing:.3em;text-transfor
   </div>
 </section>
 
-<!-- GALLERY -->
 <section class="alt">
   <div class="inner fade">
     <div class="caps">Moments together</div>
     <div class="gallery">
-      <div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div>
-      <div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div>
-      <div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div>
-      <div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div>
+      <div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div><div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div><div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div><div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div>
     </div>
     <div class="hint">Tap a frame to add a photo · Tap any text to edit it</div>
   </div>
   <svg class="flower" style="right:-24px;bottom:-30px;width:min(150px,28vw);transform:rotate(-10deg)"><use href="#calla"/></svg>
+  <svg class="flower" style="left:10px;bottom:-10px;width:min(70px,13vw)"><use href="#gyp"/></svg>
 </section>
 
-<!-- CLOSING -->
 <section class="closing">
   <div class="inner fade">
     <p class="script">We look forward to celebrating together</p>
     <a class="btn" href="mailto:you@example.com?subject=My%20address">Kindly share your address here</a>
   </div>
-  <svg class="flower" style="left:-10px;bottom:-14px;width:min(70px,14vw)"><use href="#sprig"/></svg>
 </section>
-<footer class="edit" contenteditable="true" spellcheck="false" id="foot">Jack &amp; Jack · 21.08.2027</footer>
+<footer class="edit" contenteditable="true" spellcheck="false">Heather &amp; Jack · 21.08.2027</footer>
 
 <input type="file" id="file" accept="image/*" hidden>
 <script>
-// Wedding date: year, month (0 = Jan, 6 = July), day, hour, minute
-var target = new Date(2027, 6, 27, 15, 0, 0);
+// envelope
+var env = document.getElementById("env"), opened = false;
+function openEnv(){
+  if(opened) return; opened = true;
+  env.classList.add("open");
+  setTimeout(function(){ env.classList.add("gone"); document.documentElement.classList.remove("locked"); }, 900);
+  setTimeout(function(){ env.remove(); }, 3600);
+}
+document.getElementById("seal").addEventListener("click", function(e){ e.stopPropagation(); openEnv(); });
+document.getElementById("openbtn").addEventListener("click", openEnv);
+env.addEventListener("click", openEnv);
+
+// countdown: year, month (0 = Jan, 7 = Aug), day, hour, minute
+var target = new Date(2027, 7, 21, 14, 0, 0);
 var pad = function(n){ return String(n).padStart(2, "0"); };
 function tick(){
   var s = Math.floor(Math.max(0, target - new Date()) / 1000);
@@ -203,38 +280,43 @@ function tick(){
 }
 tick(); setInterval(tick, 1000);
 
-// keep the city identical everywhere
+// city stays identical everywhere
 var cities = ["city","city2","city3"].map(function(i){ return document.getElementById(i); });
-cities.forEach(function(el){
-  el.addEventListener("input", function(){
-    cities.forEach(function(o){ if(o !== el) o.textContent = el.textContent; });
-  });
-});
+cities.forEach(function(el){ el.addEventListener("input", function(){ cities.forEach(function(o){ if(o !== el) o.textContent = el.textContent; }); }); });
 
-// photo frames
+// grassland blades
+(function(){
+  var seed = 7, r = function(){ seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+  var cols = ["#efe3b8","#e0cf94","#f6efd3","#d3bf84"], ds = ["","","",""], i, y, x, h, c, lean;
+  for(i = 0; i < 1500; i++){
+    y = 500 + Math.pow(r(), .8) * 260; x = r() * 1640 - 20;
+    h = 14 + (y - 500) / 260 * 70 * (.5 + r()); lean = (r() - .5) * 18; c = Math.floor(r() * 4);
+    ds[c] += "M" + x.toFixed(0) + " " + y.toFixed(0) + "q" + (lean / 2).toFixed(0) + " " + (-h / 2).toFixed(0) + " " + lean.toFixed(0) + " " + (-h).toFixed(0);
+  }
+  var g = document.getElementById("blades");
+  cols.forEach(function(col, k){ var p = document.createElementNS("http://www.w3.org/2000/svg","path"); p.setAttribute("d", ds[k]); p.setAttribute("stroke", col); p.setAttribute("stroke-width", k % 2 ? 1.6 : 1.1); g.appendChild(p); });
+})();
+
+// photos
 var file = document.getElementById("file"), current = null;
-document.querySelectorAll("[data-slot]").forEach(function(el){
-  el.addEventListener("click", function(){ current = el; file.click(); });
-});
+document.querySelectorAll("[data-slot]").forEach(function(el){ el.addEventListener("click", function(){ current = el; file.click(); }); });
+document.getElementById("usephoto").addEventListener("click", function(){ current = this; file.click(); });
 file.addEventListener("change", function(){
-  var f = file.files[0];
-  if(!f || !current) return;
-  var r = new FileReader();
-  r.onload = function(){
-    var img = new Image();
-    img.alt = "Wedding photo"; img.src = r.result;
-    current.innerHTML = ""; current.appendChild(img);
+  var f = file.files[0]; if(!f || !current) return;
+  var rd = new FileReader();
+  rd.onload = function(){
+    var img = new Image(); img.alt = "Photo"; img.src = rd.result;
+    if(current.id === "usephoto"){ var l = document.getElementById("land"); l.innerHTML = ""; l.appendChild(img); }
+    else { current.innerHTML = ""; current.appendChild(img); }
     file.value = "";
   };
-  r.readAsDataURL(f);
+  rd.readAsDataURL(f);
 });
 
-// gentle reveal on scroll
+// scroll reveal
 var els = document.querySelectorAll(".fade");
 if("IntersectionObserver" in window){
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
-  }, {threshold:.12});
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {threshold:.12});
   els.forEach(function(e){ io.observe(e); });
 } else { els.forEach(function(e){ e.classList.add("in"); }); }
 </script>
