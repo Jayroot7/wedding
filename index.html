@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="image/favicon.png">
 <title>Heather &amp; Jack · We’re Getting Married</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fffdf7;--alt:#faf5e8;--card:#fffefb;--ink:#2a2a27;--soft:#7a766d;--line:#e9e1cd;--slot:#f2ebd9;--khaki:#dcd2b8;--olive:#7d7766;--heart:#f5eedc;--shadow:rgba(60,55,40,.12);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}html.locked,html.locked body{overflow:hidden;height:100%}
@@ -50,7 +50,7 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 /* hero */
 .hero{min-height:92vh;display:flex;align-items:center;padding-top:72px}
 .hero .names{font-size:clamp(1.6rem,4vw,2.2rem);color:var(--olive);margin:.6em 0 0}
-.hero h1{font-family:"Great Vibes","Pinyon Script","Snell Roundhand",cursive;letter-spacing:.015em;word-spacing:.14em;font-size:clamp(2.7rem,10.5vw,6rem);line-height:1.25;margin:.1em 0 .2em;padding:0 8px;font-weight:400}
+
 .hero .city{font-size:clamp(1.2rem,3vw,1.6rem);letter-spacing:.32em;text-transform:uppercase;font-weight:500;margin:0}
 .hero .date{margin-top:.6em}
 
@@ -116,6 +116,15 @@ html{overflow-wrap:break-word}
 .pol:nth-child(1){transform:rotate(-5deg);margin:1.6em -1.2em 0 0}
 .pol:nth-child(2){transform:rotate(2deg);z-index:2}
 .pol:nth-child(3){transform:rotate(-3deg);margin:2.2em 0 0 -1.2em}
+.page{max-width:600px;margin:0 auto}
+.top{padding:84px 24px 40px}
+.top h1.script{font-size:clamp(2.2rem,8vw,3.2rem);line-height:1.3;font-weight:400;margin:52px 0 20px}
+.top .city{letter-spacing:.2em;text-transform:uppercase;font-size:.95rem;margin:0 0 8px}
+.polaroid .ph{position:relative;aspect-ratio:1/1.08;background:var(--slot);overflow:hidden}
+.polaroid .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.count{margin-top:28px}
+.closing,.venue{padding:56px 24px}
+.venue{border-top:1px solid var(--line)}
 </style>
 <script>document.documentElement.className="js locked"</script>
 </head>
@@ -155,31 +164,13 @@ html{overflow-wrap:break-word}
   <button class="openbtn" id="openbtn"><span>Open the invitation</span></button>
 </div>
 
-<!-- HERO -->
-<section class="hero">
+<main class="page">
+<section class="top">
   <div class="inner fade">
-    <div class="caps">Save the date</div>
-    <div class="script names edit" contenteditable="true" spellcheck="false">Heather &amp; Jack</div>
-    <h1 class="script">We’re getting Married</h1>
-    <div class="div" aria-hidden="true"><img src="image/divider-leaves.png" alt="" onerror="this.style.display='none'"><img class="c" src="image/divider-flower.png" alt="" onerror="this.style.display='none'"><img class="r" src="image/divider-leaves.png" alt="" onerror="this.style.display='none'"></div>
-    <p class="city edit" id="city" contenteditable="true" spellcheck="false">Glasgow</p>
-    <div class="caps date edit" contenteditable="true" spellcheck="false">Saturday, 21 August 2027</div>
-    <div class="polaroids"><figure class="pol"><div class="ph"><img src="image/samantha-gades-x40Q9jrEVT0-unsplash.jpg" alt="Heather and Jack" onerror="this.style.display='none'"></div></figure><figure class="pol"><div class="ph"><img src="image/jeremy-wong-weddings-K8KiCHh4WU4-unsplash.jpg" alt="Heather and Jack" onerror="this.style.display='none'"></div></figure><figure class="pol"><div class="ph"><img src="image/evelina-friman-hw_sKmjb0ns-unsplash.jpg" alt="Heather and Jack" onerror="this.style.display='none'"></div></figure></div>
-    
-  </div>
-</section>
-
-<!-- STORY -->
-<section class="story">
-  <div class="land" id="land" style="background:url('image/jeremy-wong-weddings-464ps_nOflw-unsplash.jpg') center/cover no-repeat #f3ecd9"></div>
-  <div class="veil"></div>
-  
-  <div class="inner fade">
-    <div class="caps">Our story begins</div>
-    <div class="collage" style="margin-top:56px">
+    <div class="collage">
       <div class="polaroid">
         <span class="stamp edit" contenteditable="true" spellcheck="false">21.08.2027</span>
-        <div class="slot" data-slot><svg><use href="#cam"/></svg>Add photo</div>
+        <div class="ph"><img src="image/jeremy-wong-weddings-464ps_nOflw-unsplash.jpg" alt="Heather and Jack" onerror="this.style.display='none'"></div>
         <div class="tag script edit" contenteditable="true" spellcheck="false">Future Mr. and Mrs.</div>
       </div>
       <div class="heart">
@@ -190,31 +181,21 @@ html{overflow-wrap:break-word}
         <div class="txt"><div class="caps" style="font-size:.6rem">Meet us in</div><div class="script edit" id="city2" contenteditable="true" spellcheck="false">Glasgow</div></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- COUNTDOWN -->
-<section>
-  <div class="inner fade">
-    <div class="caps">Counting down the days</div>
-    <div class="div" aria-hidden="true"><img class="c" src="image/divider-flowers-leaves.png" alt="" onerror="this.style.display='none'"></div>
+    <h1 class="script">We’re getting Married</h1>
+    <p class="city edit" id="city" contenteditable="true" spellcheck="false">Glasgow</p>
+    <div class="caps date edit" contenteditable="true" spellcheck="false">Saturday, 21 August 2027</div>
+    <p class="caps" style="margin-top:22px;font-size:.7rem">Formal invitation to follow</p>
     <div class="count" aria-label="Countdown to the wedding">
       <div><b id="d">--</b><small>Days</small></div><div><b id="h">--</b><small>Hours</small></div><div><b id="m">--</b><small>Minutes</small></div><div><b id="s">--</b><small>Seconds</small></div>
     </div>
-    <div class="cols">
-      <div><h3>The Date</h3><p class="edit" contenteditable="true" spellcheck="false">Saturday<br>21 August 2027</p></div>
-      <div><h3>The City</h3><p class="edit" id="city3" contenteditable="true" spellcheck="false">Glasgow</p></div>
-      <div><h3>The Invitation</h3><p class="edit" contenteditable="true" spellcheck="false">Formal invitation<br>to follow</p></div>
-    </div>
   </div>
 </section>
 
-<section class="alt closing">
+<section class="closing">
   <div class="inner fade">
     <p class="script">We look forward to celebrating together</p>
     <a class="btn" href="mailto:you@example.com?subject=My%20address">Kindly share your address here</a>
-    <img class="bloom" src="image/flowers-and-leaves.png" alt="" onerror="this.style.display='none'">
-  </div>
+    </div>
 </section>
 
 <section class="venue">
@@ -232,18 +213,7 @@ html{overflow-wrap:break-word}
     
   </div>
 </section>
-
-<section class="alt">
-  <div class="inner fade">
-    <div class="caps">Moments together</div>
-    <div class="gallery">
-      <div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div><div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div><div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div><div class="slot" data-slot><svg><use href="#cam"/></svg>Add</div>
-    </div>
-    <div class="hint">Tap a frame to add a photo · Tap any text to edit it</div>
-  </div>
-</section>
-
-
+</main>
 <footer class="edit" contenteditable="true" spellcheck="false">Heather &amp; Jack · 21.08.2027</footer>
 
 <input type="file" id="file" accept="image/*" hidden>
@@ -292,7 +262,7 @@ function tick(){
 tick(); setInterval(tick, 1000);
 
 // city stays identical everywhere
-var cities = ["city","city2","city3"].map(function(i){ return document.getElementById(i); });
+var cities = ["city","city2"].map(function(i){ return document.getElementById(i); });
 cities.forEach(function(el){ el.addEventListener("input", function(){ cities.forEach(function(o){ if(o !== el) o.textContent = el.textContent; }); }); });
 
 
