@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="image/favicon.png">
 <title>Heather &amp; Jack · We’re Getting Married</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fffdf7;--alt:#faf5e8;--card:#fffefb;--ink:#2a2a27;--soft:#7a766d;--line:#e9e1cd;--slot:#f2ebd9;--khaki:#dcd2b8;--olive:#7d7766;--heart:#f5eedc;--shadow:rgba(60,55,40,.12);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}html.locked,html.locked body{overflow:hidden;height:100%}
@@ -50,7 +50,7 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 /* hero */
 .hero{min-height:92vh;display:flex;align-items:center;padding-top:72px}
 .hero .names{font-size:clamp(1.6rem,4vw,2.2rem);color:var(--olive);margin:.6em 0 0}
-.hero h1{font-size:clamp(2.7rem,10.5vw,6rem);line-height:1.1;margin:.1em 0 .2em;padding:0 4px;font-weight:400}
+.hero h1{font-family:"Great Vibes","Pinyon Script","Snell Roundhand",cursive;letter-spacing:.015em;word-spacing:.14em;font-size:clamp(2.7rem,10.5vw,6rem);line-height:1.25;margin:.1em 0 .2em;padding:0 8px;font-weight:400}
 .hero .city{font-size:clamp(1.2rem,3vw,1.6rem);letter-spacing:.32em;text-transform:uppercase;font-weight:500;margin:0}
 .hero .date{margin-top:.6em}
 
@@ -109,6 +109,13 @@ html{overflow-wrap:break-word}
 .div{display:flex;align-items:center;justify-content:center;gap:10px;margin:28px auto;max-width:560px}
 .div img{height:48px;width:auto;max-width:32%;object-fit:contain}.div .c{height:62px;max-width:34%}.div .r{transform:scaleX(-1)}
 .bloom{display:block;margin:44px auto 0;width:min(480px,88%);height:auto}
+.polaroids{display:flex;justify-content:center;align-items:flex-start;margin:52px auto 0;max-width:780px}
+.pol{position:relative;font-size:clamp(9px,2.5vw,16px);width:12em;flex:0 0 auto;background:var(--card);padding:.75em .75em 2.6em;box-shadow:0 .8em 2em rgba(40,40,30,.2)}
+.pol .ph{position:relative;aspect-ratio:1/1.08;background:var(--slot);overflow:hidden}
+.pol img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pol:nth-child(1){transform:rotate(-5deg);margin:1.6em -1.2em 0 0}
+.pol:nth-child(2){transform:rotate(2deg);z-index:2}
+.pol:nth-child(3){transform:rotate(-3deg);margin:2.2em 0 0 -1.2em}
 </style>
 <script>document.documentElement.className="js locked"</script>
 </head>
@@ -157,6 +164,7 @@ html{overflow-wrap:break-word}
     <div class="div" aria-hidden="true"><img src="image/divider-leaves.png" alt="" onerror="this.style.display='none'"><img class="c" src="image/divider-flower.png" alt="" onerror="this.style.display='none'"><img class="r" src="image/divider-leaves.png" alt="" onerror="this.style.display='none'"></div>
     <p class="city edit" id="city" contenteditable="true" spellcheck="false">Glasgow</p>
     <div class="caps date edit" contenteditable="true" spellcheck="false">Saturday, 21 August 2027</div>
+    <div class="polaroids"><figure class="pol"><div class="ph"><img src="image/samantha-gades-x40Q9jrEVT0-unsplash.jpg" alt="Heather and Jack" onerror="this.style.display='none'"></div></figure><figure class="pol"><div class="ph"><img src="image/jeremy-wong-weddings-K8KiCHh4WU4-unsplash.jpg" alt="Heather and Jack" onerror="this.style.display='none'"></div></figure><figure class="pol"><div class="ph"><img src="image/evelina-friman-hw_sKmjb0ns-unsplash.jpg" alt="Heather and Jack" onerror="this.style.display='none'"></div></figure></div>
     
   </div>
 </section>
