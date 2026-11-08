@@ -7,8 +7,8 @@
 <title>Heather &amp; Jack</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fffdf7;--alt:#faf5e8;--card:#fffefb;--ink:#2a2a27;--soft:#7a766d;--line:#e9e1cd;--khaki:#dcd2b8;--olive:#7d7766;--heart:#f5eedc;--shadow:rgba(60,55,40,.12);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-padding-top:env(safe-area-inset-top,0px);overflow-wrap:break-word}html.locked,html.locked body{overflow:hidden;height:100%}
+:root{--bg:#fffdf7;--alt:#faf5e8;--card:#fffefb;--ink:#2a2a27;--soft:#7a766d;--line:#e9e1cd;--slot:#f2ebd9;--khaki:#dcd2b8;--olive:#7d7766;--heart:#f5eedc;--shadow:rgba(60,55,40,.12);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}html.locked,html.locked body{overflow:hidden;height:100%}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;text-align:center;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 .script{font-family:"Pinyon Script","Snell Roundhand",cursive;font-weight:400}
@@ -16,24 +16,27 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cormorant Garam
 .edit{outline:none;border-radius:4px}.edit:focus{box-shadow:0 1px 0 var(--khaki)}
 section{position:relative;padding:88px 24px;overflow:hidden}
 .inner{position:relative;z-index:2;max-width:980px;margin:0 auto}
+.alt{background:var(--alt)}
 .orn{display:flex;align-items:center;justify-content:center;gap:14px;margin:26px auto;color:#cfc3a1;max-width:260px}
 .orn::before,.orn::after{content:"";height:1px;flex:1;background:currentColor}
 .orn i{width:7px;height:7px;border:1px solid currentColor;transform:rotate(45deg)}
-.fade{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.flower{position:absolute;pointer-events:none;transform-origin:50% 100%;animation:sway 8s ease-in-out infinite alternate;z-index:1;filter:drop-shadow(0 6px 8px rgba(60,55,40,.14))}
+@keyframes sway{to{transform:rotate(2.5deg)}}
+.fade{opacity:0;transform:translateY(18px);transition:opacity 1s ease,transform 1s ease}
 .fade.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.fade{opacity:1;transform:none;transition:none}}
+@media (prefers-reduced-motion:reduce){.flower{animation:none}.fade{opacity:1;transform:none;transition:none}}
 
-/* ENVELOPE (faster) */
-.env{position:fixed;inset:0;z-index:100;perspective:1600px;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#fbf4e3 0%,#f6edd8 70%,#efe4cb 100%);transition:opacity .5s ease .25s,transform .7s cubic-bezier(.6,0,.3,1) .15s}
-.env.gone{opacity:0;transform:translateY(6%);pointer-events:none}
+/* ENVELOPE */
+.env{position:fixed;inset:0;z-index:100;perspective:1600px;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#fbf4e3 0%,#f6edd8 70%,#efe4cb 100%);transition:opacity .9s ease 1.5s,transform 1.2s cubic-bezier(.6,0,.3,1) 1.4s}
+.env.gone{opacity:0;transform:translateY(8%);pointer-events:none}
 .env .folds{position:absolute;inset:0;width:100%;height:100%}
-.flap{position:absolute;top:0;left:0;right:0;height:64%;transform-origin:50% 0;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.55,0,.25,1);z-index:3}
+.flap{position:absolute;top:0;left:0;right:0;height:64%;transform-origin:50% 0;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.55,0,.25,1);z-index:3}
 .env.open .flap{transform:rotateX(180deg)}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .face svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 12px 14px rgba(70,65,50,.22))}
 .face.back{transform:rotateX(180deg)}
 .env .to{position:absolute;top:17%;left:0;right:0;padding:0 18px}
-.env .to .caps{font-size:clamp(.85rem,2.3vw,1.25rem);color:#5d594f;letter-spacing:.22em;margin-bottom:.7em;opacity:0;animation:fi .8s ease .2s forwards}
+.env .to .caps{font-size:clamp(.85rem,2.3vw,1.25rem);color:#5d594f;letter-spacing:.22em;margin-bottom:.7em;opacity:0;animation:fi 1.2s ease .3s forwards}
 @keyframes fi{to{opacity:1}}
 .env .to .script{font-size:clamp(2.8rem,11.5vw,5.8rem);line-height:1.25;min-height:1.25em;color:#34332f;margin-top:.1em}
 .seal{position:absolute;left:50%;top:93%;width:clamp(74px,11vw,112px);aspect-ratio:.78;transform:translate(-50%,-50%);border:0;padding:0;cursor:pointer;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fffaf0,#f1e8d2 62%,#e2d8be);box-shadow:inset 0 2px 3px #fff,inset 0 -6px 10px rgba(110,105,90,.28),0 8px 14px rgba(70,65,50,.3);animation:pulse 3s ease-in-out infinite}
@@ -44,40 +47,70 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 .openbtn span{border-bottom:1px solid rgba(77,74,66,.35);padding-bottom:3px}
 @media(prefers-reduced-motion:reduce){.seal{animation:none}.flap,.env{transition-duration:.01s;transition-delay:0s}}
 
-/* SAVE THE DATE */
-.page{max-width:600px;margin:0 auto}
-.top{padding:76px 24px 40px}
-.std{font-size:clamp(3rem,13vw,4.6rem);line-height:1.1;margin:0;color:var(--ink)}
-.std-sub{margin:10px 0 0}
-.lockets{display:block;width:min(430px,92%);height:auto;margin:30px auto 0;overflow:visible}
-.lockets .ln{fill:none;stroke:#4a4739;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.lockets .fl{fill:var(--heart)}
-.lockets .thin{stroke-width:1;opacity:.55}
-.lockets text{font-family:"Pinyon Script","Snell Roundhand",cursive;font-size:42px;fill:#34332f;text-anchor:middle}
-.lk{transform-box:fill-box;transform-origin:50% 0;animation:swing 6s ease-in-out infinite alternate}
-.lk.r{animation-delay:-3s}
-@keyframes swing{from{transform:rotate(-1.6deg)}to{transform:rotate(1.6deg)}}
-.draw{stroke-dasharray:600;stroke-dashoffset:600;animation:dr 1.6s ease .2s forwards}
-@keyframes dr{to{stroke-dashoffset:0}}
-@media(prefers-reduced-motion:reduce){.lk{animation:none}.draw{animation:none;stroke-dashoffset:0}}
-.top h1.script{font-size:clamp(2.2rem,8vw,3.2rem);line-height:1.3;margin:34px 0 16px}
-.top .city{letter-spacing:.2em;text-transform:uppercase;font-size:.95rem;margin:0 0 8px}
-.count{display:flex;justify-content:center;gap:clamp(10px,3vw,28px);flex-wrap:wrap;margin-top:28px}
+/* hero */
+.hero{min-height:92vh;display:flex;align-items:center;padding-top:72px}
+.hero .names{font-size:clamp(1.6rem,4vw,2.2rem);color:var(--olive);margin:.6em 0 0}
+.hero .city{font-size:clamp(1.2rem,3vw,1.6rem);letter-spacing:.32em;text-transform:uppercase;font-weight:500;margin:0}
+.hero .date{margin-top:.6em}
+
+/* story */
+.story{padding:100px 24px 120px;min-height:760px}
+.land{position:absolute;inset:0;z-index:0}
+.land svg,.land img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.veil{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(255,253,247,.7),rgba(255,253,247,.05) 38%,rgba(255,253,247,.0) 70%,rgba(255,253,247,.35))}
+.story .caps{color:#4f4c44}
+.collage{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
+.polaroid{position:relative;width:min(280px,78vw);background:var(--card);padding:14px 14px 46px;box-shadow:0 18px 40px rgba(40,40,30,.25);transform:rotate(-2.5deg)}
+.polaroid .slot{aspect-ratio:1/1.08}
+.polaroid .stamp{position:absolute;top:-24px;left:4px;font-size:.8rem;letter-spacing:.18em;color:#4f4c44}
+.tag{position:absolute;right:-14px;top:-34px;width:96px;padding:18px 8px 14px;background:var(--khaki);color:#4f4b40;border-radius:8px 8px 26px 26px;font-size:1.05rem;line-height:1.1;transform:rotate(8deg);box-shadow:0 6px 14px var(--shadow)}
+.tag::before{content:"";position:absolute;top:-16px;left:50%;width:24px;height:24px;margin-left:-12px;border:2px solid #b9ad8a;border-radius:50%}
+.heart{position:relative;width:min(310px,82vw);margin:-34px 0 0 -40px;transform:rotate(-3deg)}
+.heart svg{width:100%;display:block;filter:drop-shadow(0 12px 18px rgba(40,40,30,.25))}
+.heart .txt{position:absolute;inset:0;padding-left:16%;padding-right:16%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:16%}
+.heart .script{font-size:clamp(1.8rem,7.5vw,2.4rem);line-height:1.1;text-align:center}
+@media(max-width:720px){.heart{margin:-30px 0 0 40px}}
+
+/* countdown */
+.count{display:flex;justify-content:center;gap:clamp(10px,3vw,28px);flex-wrap:wrap}
 .count div{min-width:78px;padding:6px 8px}
 .count b{display:block;font-size:2.4rem;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
 .count small{display:block;margin-top:8px;letter-spacing:.25em;text-transform:uppercase;font-size:.62rem;color:var(--soft)}
-.btn{display:inline-block;max-width:100%;line-height:1.6;margin-top:30px;padding:16px 30px;background:var(--khaki);color:#4f4b40;text-decoration:none;letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;font-weight:600;border-radius:2px;transition:background .3s,transform .3s}
+.btn{display:inline-block;max-width:100%;line-height:1.6;margin-top:30px;padding:16px 30px;background:var(--khaki);color:#4f4b40;text-decoration:none;letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;font-weight:600;border-radius:2px;transition:background .3s,transform .3s;border:0;font-family:inherit;cursor:pointer}
 .btn:hover{background:#cfc3a1;transform:translateY(-2px)}
-.btn.ghost{background:transparent;border:1px solid #cfc3a1}
-.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
 .closing .script{font-size:clamp(2rem,6vw,3rem);color:var(--olive);margin:0}
 footer{padding:28px 24px 36px;font-size:.75rem;line-height:1.7;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);border-top:1px solid var(--line)}
-@media(max-width:600px){section{padding:68px 20px}.caps{letter-spacing:.2em;font-size:.72rem}.count{gap:8px}.count div{min-width:62px;padding:6px 4px}.count b{font-size:1.9rem}.count small{letter-spacing:.14em}.btn{letter-spacing:.14em;padding:15px 20px}}
+html{overflow-wrap:break-word}
+@media(max-width:600px){section{padding:68px 20px}.caps{letter-spacing:.2em;font-size:.72rem}.hero .city{letter-spacing:.2em}.count{gap:8px}.count div{min-width:62px;padding:6px 4px}.count b{font-size:1.9rem}.count small{letter-spacing:.14em}.btn{letter-spacing:.14em;padding:15px 20px}}
 .venue .name{font-size:clamp(2.4rem,8vw,3.8rem);color:var(--olive);margin:.2em 0 0;line-height:1.15}
 .venue address{font-style:normal;font-size:1.25rem;line-height:1.6;margin-top:10px}
 .venue .note{font-size:.95rem;color:var(--soft);margin:6px 0 0}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.btn.ghost{background:transparent;border:1px solid #cfc3a1}
+.page{max-width:600px;margin:0 auto}
+.top{padding:84px 24px 40px}
+.top h1.script{font-size:clamp(2.2rem,8vw,3.2rem);line-height:1.3;font-weight:400;margin:52px 0 20px}
+.top .city{letter-spacing:.2em;text-transform:uppercase;font-size:.95rem;margin:0 0 8px}
+.polaroid .ph{position:relative;aspect-ratio:1/1.08;background:var(--slot);overflow:hidden}
+.polaroid .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.count{margin-top:28px}
 .closing,.venue{padding:56px 24px}
 .venue{border-top:1px solid var(--line)}
+
+/* ADDRESS FORM */
+.closing .sub{font-size:1.05rem;color:var(--soft);margin:12px 0 0}
+.rsvp{text-align:left;max-width:460px;margin:34px auto 0}
+.rsvp label{display:block;margin-top:18px;letter-spacing:.22em;text-transform:uppercase;font-size:.7rem;font-weight:600;color:var(--soft)}
+.rsvp input{display:block;width:100%;margin-top:6px;padding:12px 14px;font:inherit;font-size:1.1rem;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:2px;outline:none;transition:border-color .2s,box-shadow .2s}
+.rsvp input:focus{border-color:#b9ad8a;box-shadow:0 0 0 3px rgba(220,210,184,.5)}
+.rsvp .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rsvp .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+.rsvp .btn{display:block;width:100%;margin-top:28px}
+.rsvp .btn[disabled]{opacity:.6;cursor:default;transform:none}
+.rsvp .msg{text-align:center;margin:14px 0 0;min-height:1.4em;font-size:1rem}
+.rsvp .msg.err{color:#9a4a3a}
+.thanks{display:none;margin-top:30px}.thanks .script{font-size:2.4rem;color:var(--olive)}
+@media(max-width:480px){.rsvp .row{grid-template-columns:1fr;gap:0}}
 </style>
 <script>document.documentElement.className="js locked"</script>
 </head>
@@ -117,39 +150,21 @@ footer{padding:28px 24px 36px;font-size:.75rem;line-height:1.7;letter-spacing:.2
 
 <main class="page">
 <section class="top">
-  <div class="inner fade in">
-    <div class="caps">Heather &amp; Jack</div>
-    <h2 class="script std">Save the Date</h2>
-
-    <svg class="lockets" viewBox="0 0 320 210" role="img" aria-label="Two heart lockets tied with a ribbon, with the initials H and J">
-      <!-- ribbon and bow -->
-      <g class="ln draw">
-        <path d="M160 36C140 8 108 10 114 30C118 44 148 42 160 36Z"/>
-        <path d="M160 36C180 8 212 10 206 30C202 44 172 42 160 36Z"/>
-        <path d="M158 40C140 50 120 58 108 70"/>
-        <path d="M162 40C180 50 200 58 212 70"/>
-        <path d="M156 42C146 58 150 76 134 90" class="thin"/>
-        <path d="M164 42C174 58 170 76 186 90" class="thin"/>
-      </g>
-      <ellipse cx="160" cy="37" rx="6" ry="5" class="ln fl"/>
-      <!-- left locket H -->
-      <g class="lk" transform="translate(105 122) rotate(-8)">
-        <circle cx="0" cy="-47" r="4.5" class="ln"/>
-        <path class="ln fl" d="M0 52C-56 14-54 -32-27 -41C-13 -45-2 -37 0 -26C2 -37 13 -45 27 -41C54 -32 56 14 0 52Z"/>
-        <path class="ln thin" transform="scale(.78) translate(0 4)" d="M0 52C-56 14-54 -32-27 -41C-13 -45-2 -37 0 -26C2 -37 13 -45 27 -41C54 -32 56 14 0 52Z"/>
-        <circle cx="-38" cy="-2" r="1.6" fill="#4a4739"/>
-        <text x="0" y="14">H</text>
-      </g>
-      <!-- right locket J -->
-      <g class="lk r" transform="translate(215 122) rotate(8)">
-        <circle cx="0" cy="-47" r="4.5" class="ln"/>
-        <path class="ln fl" d="M0 52C-56 14-54 -32-27 -41C-13 -45-2 -37 0 -26C2 -37 13 -45 27 -41C54 -32 56 14 0 52Z"/>
-        <path class="ln thin" transform="scale(.78) translate(0 4)" d="M0 52C-56 14-54 -32-27 -41C-13 -45-2 -37 0 -26C2 -37 13 -45 27 -41C54 -32 56 14 0 52Z"/>
-        <circle cx="38" cy="-2" r="1.6" fill="#4a4739"/>
-        <text x="0" y="14">J</text>
-      </g>
-    </svg>
-
+  <div class="inner fade">
+    <div class="collage">
+      <div class="polaroid">
+        <span class="stamp edit" contenteditable="true" spellcheck="false">21.08.2027</span>
+        <div class="ph"><img src="image/jeremy-wong-weddings-464ps_nOflw-unsplash.jpg" alt="Heather and Jack" onerror="this.style.display='none'"></div>
+        <div class="tag script edit" contenteditable="true" spellcheck="false">Future Mr. and Mrs.</div>
+      </div>
+      <div class="heart">
+        <svg viewBox="0 0 200 180" aria-hidden="true">
+          <path d="M100 168 C20 110 6 70 22 40 C40 8 84 14 100 46 C116 14 160 8 178 40 C194 70 180 110 100 168Z" fill="var(--heart)"/>
+          <path d="M100 168 C20 110 6 70 22 40 C40 8 84 14 100 46 C116 14 160 8 178 40 C194 70 180 110 100 168Z" fill="none" stroke="var(--heart)" stroke-width="12" stroke-dasharray="0.1 11" stroke-linecap="round"/>
+        </svg>
+        <div class="txt"><div class="caps" style="font-size:.6rem">Meet us in</div><div class="script edit" id="city2" contenteditable="true" spellcheck="false">Glasgow</div></div>
+      </div>
+    </div>
     <h1 class="script">We’re getting Married</h1>
     <p class="city edit" id="city" contenteditable="true" spellcheck="false">Troon</p>
     <div class="caps date edit" contenteditable="true" spellcheck="false">Sunday, 15 August 2027</div>
@@ -163,7 +178,27 @@ footer{padding:28px 24px 36px;font-size:.75rem;line-height:1.7;letter-spacing:.2
 <section class="closing">
   <div class="inner fade">
     <p class="script">We look forward to celebrating together</p>
-    <a class="btn" href="mailto:you@example.com?subject=My%20address">Kindly share your address here</a>
+    <p class="sub">Kindly share your address so we can send your formal invitation.</p>
+    <form class="rsvp" id="addr" novalidate>
+      <label for="f-name">Name(s)</label>
+      <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g. Sarah &amp; Tom Smith" required>
+      <label for="f-a1">Address line 1</label>
+      <input id="f-a1" name="address1" type="text" autocomplete="address-line1" required>
+      <label for="f-a2">Address line 2 <span style="text-transform:none;letter-spacing:0;font-weight:400">(optional)</span></label>
+      <input id="f-a2" name="address2" type="text" autocomplete="address-line2">
+      <div class="row">
+        <div><label for="f-city">Town / City</label><input id="f-city" name="city" type="text" autocomplete="address-level2" required></div>
+        <div><label for="f-pc">Postcode</label><input id="f-pc" name="postcode" type="text" autocomplete="postal-code" required></div>
+      </div>
+      <label for="f-country">Country</label>
+      <input id="f-country" name="country" type="text" autocomplete="country-name" value="United Kingdom" required>
+      <label for="f-email">Email</label>
+      <input id="f-email" name="email" type="email" autocomplete="email" required>
+      <div class="hp" aria-hidden="true"><label>Leave empty<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn" type="submit" id="send">Send my address</button>
+      <p class="msg" id="msg" role="status"></p>
+    </form>
+    <div class="thanks" id="thanks"><p class="script">Thank you!</p><p class="sub">We’ve got your details and your invitation will be on its way.</p></div>
   </div>
 </section>
 
@@ -184,18 +219,19 @@ footer{padding:28px 24px 36px;font-size:.75rem;line-height:1.7;letter-spacing:.2
 <footer class="edit" contenteditable="true" spellcheck="false">Heather &amp; Jack · 15.08.2027</footer>
 
 <script>
-// envelope (quicker open + reveal)
+// envelope
 var env = document.getElementById("env"), opened = false;
 function openEnv(){
   if(opened) return; opened = true;
   env.classList.add("open");
-  setTimeout(function(){ env.classList.add("gone"); document.documentElement.classList.remove("locked"); }, 450);
-  setTimeout(function(){ env.remove(); }, 1500);
+  setTimeout(function(){ env.classList.add("gone"); document.documentElement.classList.remove("locked"); }, 900);
+  setTimeout(function(){ env.remove(); }, 3600);
 }
 document.getElementById("seal").addEventListener("click", function(e){ e.stopPropagation(); openEnv(); });
 document.getElementById("openbtn").addEventListener("click", openEnv);
 env.addEventListener("click", openEnv);
 
+// type the names into existence, then open by itself
 var typedEl = document.getElementById("typed"), full = "Heather & Jack", started = false;
 function typeNames(){
   if(started) return; started = true;
@@ -203,15 +239,15 @@ function typeNames(){
   b.style.visibility = "hidden"; b.textContent = full; typedEl.textContent = ""; typedEl.append(a, b);
   var t = setInterval(function(){
     i++; a.textContent = full.slice(0, i); b.textContent = full.slice(i);
-    if(i >= full.length){ clearInterval(t); setTimeout(openEnv, 500); }
-  }, 90);
+    if(i >= full.length){ clearInterval(t); setTimeout(openEnv, 1400); }
+  }, 130);
 }
-if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches){ setTimeout(openEnv, 800); }
+if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches){ setTimeout(openEnv, 1200); }
 else {
   typedEl.textContent = "\u00a0";
-  var go = function(){ setTimeout(typeNames, 300); };
+  var go = function(){ setTimeout(typeNames, 900); };
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(go); } else { go(); }
-  setTimeout(typeNames, 1500);
+  setTimeout(typeNames, 3000);
 }
 
 // countdown
@@ -226,7 +262,30 @@ function tick(){
 }
 tick(); setInterval(tick, 1000);
 
-// add to calendar (.ics)
+// city stays identical everywhere
+var cities = ["city","city2"].map(function(i){ return document.getElementById(i); });
+cities.forEach(function(el){ el.addEventListener("input", function(){ cities.forEach(function(o){ if(o !== el) o.textContent = el.textContent; }); }); });
+
+// ADDRESS FORM -> Google Sheets (paste your Apps Script web app URL below)
+var SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+var form = document.getElementById("addr"), msg = document.getElementById("msg"), sendBtn = document.getElementById("send");
+form.addEventListener("submit", function(e){
+  e.preventDefault(); msg.className = "msg"; msg.textContent = "";
+  if(form.website.value) return; // spam trap
+  if(!form.checkValidity()){ msg.className = "msg err"; msg.textContent = "Please fill in the required fields."; form.reportValidity(); return; }
+  if(SCRIPT_URL.indexOf("PASTE_") === 0){ msg.className = "msg err"; msg.textContent = "Form isn’t connected to Google Sheets yet."; return; }
+  sendBtn.disabled = true; sendBtn.textContent = "Sending…";
+  var data = new URLSearchParams(new FormData(form));
+  fetch(SCRIPT_URL, {method:"POST", mode:"no-cors", body:data}).then(function(){
+    form.style.display = "none"; document.querySelector(".closing .sub").style.display = "none";
+    document.getElementById("thanks").style.display = "block";
+  }).catch(function(){
+    sendBtn.disabled = false; sendBtn.textContent = "Send my address";
+    msg.className = "msg err"; msg.textContent = "Something went wrong. Please try again.";
+  });
+});
+
+// add to calendar (.ics for Apple / Outlook)
 document.getElementById("ics").addEventListener("click", function(e){
   e.preventDefault();
   var L = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Wedding Invitation//EN","BEGIN:VEVENT","UID:heather-jack-20270821@wedding","DTSTAMP:20261023T000000Z","DTSTART:20270821T140000","DTEND:20270821T230000","SUMMARY:Heather & Jack\u2019s Wedding","LOCATION:Mar Hall\\, Earl of Mar Estate\\, Bishopton PA7 5NW","DESCRIPTION:We\u2019re getting married! Formal invitation to follow.","BEGIN:VALARM","TRIGGER:-P7D","ACTION:DISPLAY","DESCRIPTION:One week to go","END:VALARM","END:VEVENT","END:VCALENDAR"];
