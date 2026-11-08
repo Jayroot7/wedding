@@ -7,7 +7,7 @@
 <title>Heather &amp; Jack</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fffdf7;--alt:#faf5e8;--card:#fffefb;--ink:#2a2a27;--soft:#7a766d;--line:#e9e1cd;--slot:#f2ebd9;--khaki:#dcd2b8;--olive:#7d7766;--heart:#f5eedc;--shadow:rgba(60,55,40,.12);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#fffdf7;--alt:#faf5e8;--card:#fffefb;--ink:#2a2a27;--soft:#7a766d;--line:#e9e1cd;--slot:#f2ebd9;--khaki:#dcd2b8;--olive:#7d7766;--heart:#f5eedc;--pink:#c08a7e;--shadow:rgba(60,55,40,.12);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}html.locked,html.locked body{overflow:hidden;height:100%}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;text-align:center;overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -35,7 +35,7 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .face svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 12px 14px rgba(70,65,50,.22))}
 .face.back{transform:rotateX(180deg)}
-.env .to{position:absolute;top:17%;left:0;right:0;padding:0 18px}
+.env .to{position:absolute;top:26%;left:0;right:0;padding:0 18px}
 .env .to .caps{font-size:clamp(.85rem,2.3vw,1.25rem);color:#5d594f;letter-spacing:.22em;margin-bottom:.7em;opacity:0;animation:fi .8s ease .2s forwards}
 @keyframes fi{to{opacity:1}}
 .env .to .script{font-size:clamp(2.8rem,11.5vw,5.8rem);line-height:1.25;min-height:1.25em;color:#34332f;margin-top:.1em}
@@ -45,6 +45,13 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 @keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.04)}}
 .openbtn{position:absolute;bottom:8%;left:0;right:0;background:none;border:0;font:inherit;cursor:pointer;color:#4d4a42;letter-spacing:.16em;text-transform:uppercase;font-size:clamp(.72rem,1.5vw,.9rem)}
 .openbtn span{border-bottom:1px solid rgba(77,74,66,.35);padding-bottom:3px}
+@media(max-width:600px){/* PHONE: zoomed-in envelope */
+.flap{height:74%}
+.env .to{top:25%}
+.env .to .caps{font-size:.95rem}
+.env .to .script{font-size:clamp(3.4rem,15.5vw,4.8rem)}
+.seal{width:clamp(96px,28vw,130px)}
+.openbtn{bottom:6%;font-size:.8rem}}
 @media(prefers-reduced-motion:reduce){.seal{animation:none}.flap,.env{transition-duration:.01s;transition-delay:0s}}
 
 /* hero */
@@ -59,15 +66,23 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 .land svg,.land img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(255,253,247,.7),rgba(255,253,247,.05) 38%,rgba(255,253,247,.0) 70%,rgba(255,253,247,.35))}
 .story .caps{color:#4f4c44}
-.collage{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:56px}
-.nm{font-size:clamp(2.6rem,11vw,3.8rem);line-height:1.2;color:var(--ink);margin:0}
-.amp{color:#c08a7e;font-size:.85em;padding:0 .08em}
-.std{font-size:clamp(4.4rem,21vw,7rem);line-height:1;margin:.12em 0 0;color:var(--olive);font-weight:400}
-.polaroid{position:relative;width:min(280px,78vw);background:var(--card);padding:14px 14px 46px;box-shadow:0 18px 40px rgba(40,40,30,.25);transform:rotate(-2.5deg)}
+/* ===== PNG BEHIND POLAROID: edit these 5 numbers to move / rotate / resize ===== */
+.bgpng{--x:0px;      /* move left (-) / right (+) */
+       --y:0px;      /* move up (-) / down (+) */
+       --rot:0deg;   /* rotate, e.g. 15deg or -20deg */
+       --w:420px;    /* size (width) */
+       --op:1;       /* opacity 0 to 1 */
+       position:absolute;left:50%;top:50%;width:var(--w);max-width:none;opacity:var(--op);
+       transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) rotate(var(--rot));
+       z-index:0;pointer-events:none}
+/* ===== end PNG settings ===== */
+.collage{position:relative;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:56px}
+.std{font-size:clamp(4.4rem,21vw,7rem);line-height:1;margin:0;color:var(--pink);font-weight:400}
+.polaroid{z-index:1;position:relative;width:min(280px,78vw);background:var(--card);padding:14px 14px 46px;box-shadow:0 18px 40px rgba(40,40,30,.25);transform:rotate(-2.5deg)}
 .polaroid .slot{aspect-ratio:1/1.08}
 .polaroid .stamp{position:absolute;top:-24px;left:4px;font-size:.8rem;letter-spacing:.18em;color:#4f4c44}
 .polaroid{padding-bottom:62px}
-.cap{position:absolute;left:0;right:0;bottom:12px;font-size:1.7rem;line-height:1.2;color:#4f4b40}
+.cap{position:absolute;left:0;right:0;bottom:12px;font-size:1.7rem;line-height:1.2;color:var(--pink)}
 /* countdown */
 .count{display:flex;justify-content:center;gap:clamp(10px,3vw,28px);flex-wrap:wrap}
 .count div{min-width:78px;padding:6px 8px}
@@ -75,20 +90,24 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 .count small{display:block;margin-top:8px;letter-spacing:.25em;text-transform:uppercase;font-size:.62rem;color:var(--soft)}
 .btn{display:inline-block;max-width:100%;line-height:1.6;margin-top:30px;padding:16px 30px;background:var(--khaki);color:#4f4b40;text-decoration:none;letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;font-weight:600;border-radius:2px;transition:background .3s,transform .3s;border:0;font-family:inherit;cursor:pointer}
 .btn:hover{background:#cfc3a1;transform:translateY(-2px)}
-.closing .script{font-size:clamp(2rem,6vw,3rem);color:var(--olive);margin:0}
+.closing .script{font-size:clamp(2rem,6vw,3rem);color:var(--pink);margin:0}
 footer{padding:28px 24px 36px;font-size:.75rem;line-height:1.7;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);border-top:1px solid var(--line)}
 html{overflow-wrap:break-word}
 @media(max-width:600px){section{padding:68px 20px}.caps{letter-spacing:.2em;font-size:.72rem}.hero .city{letter-spacing:.2em}.count{gap:8px}.count div{min-width:62px;padding:6px 4px}.count b{font-size:1.9rem}.count small{letter-spacing:.14em}.btn{letter-spacing:.14em;padding:15px 20px}}
-.venue .name{font-size:clamp(2.4rem,8vw,3.8rem);color:var(--olive);margin:.2em 0 0;line-height:1.15}
+.venue .name{font-size:clamp(2.4rem,8vw,3.8rem);color:var(--pink);margin:.2em 0 0;line-height:1.15}
 .venue address{font-style:normal;font-size:1.25rem;line-height:1.6;margin-top:10px}
 .venue .note{font-size:.95rem;color:var(--soft);margin:6px 0 0}
 .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
 .btn.ghost{background:transparent}
 .btns .btn{width:min(320px,100%);text-align:center;border:1px solid #cfc3a1;padding-left:12px;padding-right:12px}
 .page{max-width:600px;margin:0 auto}
-.top{padding:84px 24px 40px}
+.top{padding:84px 24px 40px;overflow:visible}
 .top h1.script{font-size:clamp(2.2rem,8vw,3.2rem);line-height:1.3;font-weight:400;margin:52px 0 20px}
-.top .city{letter-spacing:.2em;text-transform:uppercase;font-size:.95rem;margin:0 0 8px}
+.top .city{letter-spacing:.2em;text-transform:uppercase;font-size:1.05rem;margin:0 0 8px;color:var(--pink);font-weight:600}
+/* BIG MAIN DATE under Troon: change font-size here */
+.top .date{font-size:clamp(1.35rem,6.2vw,1.9rem);letter-spacing:.18em;color:var(--ink);font-weight:500;margin-top:.5em;line-height:1.4}
+.count small{color:var(--pink)}
+.orn{color:var(--pink);opacity:.6}
 .polaroid .ph{position:relative;aspect-ratio:1/1.08;background:var(--slot);overflow:hidden}
 .polaroid .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .count{margin-top:28px}
@@ -107,7 +126,7 @@ html{overflow-wrap:break-word}
 .rsvp .btn[disabled]{opacity:.6;cursor:default;transform:none}
 .rsvp .msg{text-align:center;margin:14px 0 0;min-height:1.4em;font-size:1rem}
 .rsvp .msg.err{color:#9a4a3a}
-.thanks{display:none;margin-top:30px}.thanks .script{font-size:2.4rem;color:var(--olive)}
+.thanks{display:none;margin-top:30px}.thanks .script{font-size:2.4rem;color:var(--pink)}
 @media(max-width:480px){.rsvp .row{grid-template-columns:1fr;gap:0}}
 </style>
 <script>document.documentElement.className="js locked"</script>
@@ -149,11 +168,12 @@ html{overflow-wrap:break-word}
 <main class="page">
 <section class="top">
   <div class="inner fade">
-    <div class="nm script">Heather <span class="amp">&amp;</span> Jack</div>
     <h2 class="std script">Save the Date</h2>
     <div class="collage">
+      <!-- PNG BEHIND THE POLAROID: swap the filename below, then adjust the settings in the CSS (.bgpng) -->
+      <img class="bgpng" src="image/OLIVEBRANCHNOOLIVE.png" alt="" aria-hidden="true" onerror="this.style.display='none'">
       <div class="polaroid">
-        <span class="stamp edit" contenteditable="true" spellcheck="false">15.08.2027</span>
+       <!-- <span class="stamp edit" contenteditable="true" spellcheck="false">15.08.2027</span> <!-->
         <div class="ph"><img src="image/Edi_24.10.26_FULL(39).JPG" alt="Heather and Jack" onerror="this.style.display='none'"></div>
         <div class="cap script edit" contenteditable="true" spellcheck="false">Future Mr. and Mrs.</div>
       </div>
@@ -205,11 +225,187 @@ html{overflow-wrap:break-word}
       <a class="btn" id="gcal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Heather%20%26%20Jack%E2%80%99s%20Wedding&amp;dates=20270815T130000/20270815T220000&amp;ctz=Europe/London&amp;details=We%E2%80%99re%20getting%20married%21%20Formal%20invitation%20to%20follow.&amp;location=Lochgreen%20House%2C%20Monktonhill%20Rd%2C%20Southwood%2C%20Troon%20KA10%207EN">Add to Google Calendar</a>
       <a class="btn ghost" id="ics" href="#">Apple / Outlook calendar</a>
     </div>
-    <p class="note" style="margin-top:14px">Sunday 15 August 2027 · 1:00 pm</p>
   </div>
 </section>
 </main>
-<footer class="edit" contenteditable="true" spellcheck="false">Heather &amp; Jack · 15.08.2027</footer>
+<footer class="edit" contenteditable="true" spellcheck="false">svg_code = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <style>
+    .wireframe {
+      fill: none;
+      stroke: #000000;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+
+  <!-- TURRET (LEFT TOWER) -->
+  <g id="turret">
+    <!-- Turret Body -->
+    <path d="M 60 380 L 60 600 L 190 600 L 190 380" class="wireframe"/>
+    <!-- Turret Roof Lines -->
+    <path d="M 60 380 L 125 260 L 190 380" class="wireframe"/>
+    <path d="M 125 260 L 190 330" class="wireframe"/>
+    <!-- Turret Mid Belt Line -->
+    <path d="M 60 500 L 190 500" class="wireframe"/>
+    <path d="M 60 385 Q 125 400 190 385" class="wireframe"/>
+
+    <!-- Turret Windows -->
+    <rect x="155" y="415" width="22" height="60" class="wireframe"/>
+    <rect x="158" y="530" width="18" height="50" class="wireframe"/>
+    <line x1="68" y1="415" x2="76" y2="415" class="wireframe"/>
+    <line x1="68" y1="475" x2="76" y2="475" class="wireframe"/>
+    <line x1="68" y1="415" x2="68" y2="475" class="wireframe"/>
+    <line x1="76" y1="415" x2="76" y2="475" class="wireframe"/>
+
+    <line x1="68" y1="535" x2="76" y2="535" class="wireframe"/>
+    <line x1="68" y1="585" x2="76" y2="585" class="wireframe"/>
+    <line x1="68" y1="535" x2="68" y2="585" class="wireframe"/>
+    <line x1="76" y1="535" x2="76" y2="585" class="wireframe"/>
+  </g>
+
+  <!-- MAIN HOUSE BODY & ROOF -->
+  <g id="main-structure">
+    <!-- Main Wall Outline -->
+    <path d="M 190 600 L 730 600 L 730 400 L 190 400 Z" class="wireframe"/>
+    <!-- Main Roof Ridge & Pitch -->
+    <line x1="265" y1="305" x2="730" y2="305" class="wireframe"/>
+    <line x1="190" y1="400" x2="265" y2="305" class="wireframe"/>
+
+    <!-- Roof Skylights -->
+    <rect x="325" y="340" width="18" height="15" class="wireframe"/>
+    <rect x="460" y="340" width="18" height="15" class="wireframe"/>
+    <rect x="580" y="340" width="18" height="15" class="wireframe"/>
+    <rect x="675" y="340" width="18" height="15" class="wireframe"/>
+  </g>
+
+  <!-- CHIMNEYS -->
+  <!-- Left Large Chimney -->
+  <g id="left-chimney">
+    <path d="M 190 400 L 190 205 L 265 205 L 265 400" class="wireframe"/>
+    <rect x="185" y="195" width="85" height="10" class="wireframe"/>
+    <!-- Chimney Pots -->
+    <rect x="200" y="175" width="8" height="20" rx="4" class="wireframe"/>
+    <rect x="212" y="175" width="8" height="20" rx="4" class="wireframe"/>
+    <rect x="224" y="175" width="8" height="20" rx="4" class="wireframe"/>
+    <rect x="236" y="175" width="8" height="20" rx="4" class="wireframe"/>
+    <rect x="248" y="175" width="8" height="20" rx="4" class="wireframe"/>
+  </g>
+
+  <!-- Center Chimney -->
+  <g id="center-chimney">
+    <path d="M 395 305 L 395 240 L 420 240 L 420 305" class="wireframe"/>
+    <rect x="390" y="235" width="35" height="5" class="wireframe"/>
+  </g>
+
+  <!-- Far Right Chimney & Antenna -->
+  <g id="right-chimney">
+    <path d="M 895 350 L 895 205 L 935 205 L 935 500" class="wireframe"/>
+    <rect x="890" y="198" width="50" height="7" class="wireframe"/>
+    <!-- TV Antenna Wireframe -->
+    <line x1="905" y1="198" x2="905" y2="150" class="wireframe"/>
+    <line x1="890" y1="165" x2="920" y2="165" class="wireframe"/>
+    <line x1="895" y1="180" x2="915" y2="180" class="wireframe"/>
+  </g>
+
+  <!-- CENTRAL ENTRANCE BAY & PORTICO -->
+  <g id="entrance">
+    <!-- Entrance Peak / Gable Top -->
+    <path d="M 570 400 L 570 345 L 600 310 L 630 345 L 630 400" class="wireframe"/>
+    <rect x="588" y="355" width="24" height="40" class="wireframe"/>
+
+    <!-- Doorway Structure & Surrounding Pillars -->
+    <rect x="550" y="490" width="100" height="110" class="wireframe"/>
+    <rect x="555" y="495" width="90" height="105" class="wireframe"/>
+    <rect x="570" y="505" width="60" height="25" class="wireframe"/>
+    <!-- Inner Doorway -->
+    <rect x="570" y="535" width="60" height="65" class="wireframe"/>
+    <rect x="580" y="550" width="40" height="50" class="wireframe"/>
+  </g>
+
+  <!-- WINDOWS ON FACADE -->
+  <g id="windows">
+    <!-- First Floor Windows -->
+    <g id="upper-windows">
+      <rect x="325" y="420" width="22" height="50" class="wireframe"/>
+      <line x1="336" y1="420" x2="336" y2="470" class="wireframe"/>
+
+      <rect x="352" y="420" width="22" height="50" class="wireframe"/>
+      <line x1="363" y1="420" x2="363" y2="470" class="wireframe"/>
+
+      <rect x="452" y="420" width="24" height="50" class="wireframe"/>
+      <line x1="464" y1="420" x2="464" y2="470" class="wireframe"/>
+
+      <rect x="480" y="420" width="24" height="50" class="wireframe"/>
+      <line x1="492" y1="420" x2="492" y2="470" class="wireframe"/>
+
+      <rect x="660" y="435" width="18" height="35" class="wireframe"/>
+      <rect x="690" y="435" width="18" height="35" class="wireframe"/>
+    </g>
+
+    <!-- Ground Floor Windows -->
+    <g id="ground-windows">
+      <rect x="333" y="520" width="35" height="60" class="wireframe"/>
+
+      <!-- Grid Window Left of Door -->
+      <rect x="420" y="515" width="110" height="70" class="wireframe"/>
+      <!-- Grid Lines -->
+      <line x1="447" y1="515" x2="447" y2="585" class="wireframe"/>
+      <line x1="475" y1="515" x2="475" y2="585" class="wireframe"/>
+      <line x1="502" y1="515" x2="502" y2="585" class="wireframe"/>
+      <line x1="420" y1="550" x2="530" y2="550" class="wireframe"/>
+
+      <!-- Window Right of Door -->
+      <rect x="655" y="535" width="55" height="40" class="wireframe"/>
+      <line x1="682" y1="535" x2="682" y2="575" class="wireframe"/>
+    </g>
+  </g>
+
+  <!-- RIGHT STEPPED-GABLE WING & CONSERVATORY EXTENSION -->
+  <g id="right-wing">
+    <!-- Main Gable Wall Base -->
+    <path d="M 730 400 L 730 600 L 980 600 L 980 500 L 730 400" class="wireframe"/>
+
+    <!-- Crow-Stepped Roof Line -->
+    <path d="M 730 400 
+             L 745 400 L 745 385 
+             L 765 385 L 765 370 
+             L 785 370 L 785 355 
+             L 805 355 L 805 340 
+             L 825 340 L 825 325 
+             L 850 300 
+             L 870 325 L 870 340 
+             L 890 340 L 890 355 
+             L 910 355 L 910 370 
+             L 930 370 L 930 385 
+             L 950 385 L 950 400 L 965 415" class="wireframe"/>
+
+    <!-- Attic Slot Window -->
+    <rect x="843" y="340" width="14" height="26" class="wireframe"/>
+
+    <!-- Gable Window Pair -->
+    <rect x="815" y="425" width="70" height="60" class="wireframe"/>
+    <line x1="850" y1="425" x2="850" y2="485" class="wireframe"/>
+
+    <!-- Right Side Perspective Conservatory / Extension -->
+    <path d="M 730 490 L 980 490 L 980 600" class="wireframe"/>
+    <path d="M 730 505 L 950 545 L 950 600" class="wireframe"/>
+    
+    <!-- Conservatory Windows -->
+    <rect x="750" y="525" width="85" height="70" class="wireframe"/>
+    <rect x="845" y="540" width="100" height="60" class="wireframe"/>
+    <line x1="895" y1="540" x2="895" y2="600" class="wireframe"/>
+  </g>
+
+  <!-- GROUND BASELINE -->
+  <line x1="40" y1="600" x2="980" y2="600" class="wireframe"/>
+</svg>
+'''
+
+with open('loch_green_wireframe.svg', 'w') as f:
+    f.write(svg_code)
+
+print("Wireframe SVG created successfully.")</footer>
 
 <script>
 // envelope
