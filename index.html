@@ -59,18 +59,15 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 .land svg,.land img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(255,253,247,.7),rgba(255,253,247,.05) 38%,rgba(255,253,247,.0) 70%,rgba(255,253,247,.35))}
 .story .caps{color:#4f4c44}
-.collage{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
+.collage{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:56px}
+.nm{font-size:clamp(2.6rem,11vw,3.8rem);line-height:1.2;color:var(--ink);margin:0}
+.amp{color:#c08a7e;font-size:.85em;padding:0 .08em}
+.std{font-size:clamp(4.4rem,21vw,7rem);line-height:1;margin:.12em 0 0;color:var(--olive);font-weight:400}
 .polaroid{position:relative;width:min(280px,78vw);background:var(--card);padding:14px 14px 46px;box-shadow:0 18px 40px rgba(40,40,30,.25);transform:rotate(-2.5deg)}
 .polaroid .slot{aspect-ratio:1/1.08}
 .polaroid .stamp{position:absolute;top:-24px;left:4px;font-size:.8rem;letter-spacing:.18em;color:#4f4c44}
-.tag{position:absolute;right:-14px;top:-34px;width:96px;padding:18px 8px 14px;background:var(--khaki);color:#4f4b40;border-radius:8px 8px 26px 26px;font-size:1.05rem;line-height:1.1;transform:rotate(8deg);box-shadow:0 6px 14px var(--shadow)}
-.tag::before{content:"";position:absolute;top:-16px;left:50%;width:24px;height:24px;margin-left:-12px;border:2px solid #b9ad8a;border-radius:50%}
-.heart{position:relative;width:min(310px,82vw);margin:-34px 0 0 -40px;transform:rotate(-3deg)}
-.heart svg{width:100%;display:block;filter:drop-shadow(0 12px 18px rgba(40,40,30,.25))}
-.heart .txt{position:absolute;inset:0;padding-left:16%;padding-right:16%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:16%}
-.heart .script{font-size:clamp(1.8rem,7.5vw,2.4rem);line-height:1.1;text-align:center}
-@media(max-width:720px){.heart{margin:-30px 0 0 40px}}
-
+.polaroid{padding-bottom:62px}
+.cap{position:absolute;left:0;right:0;bottom:12px;font-size:1.7rem;line-height:1.2;color:#4f4b40}
 /* countdown */
 .count{display:flex;justify-content:center;gap:clamp(10px,3vw,28px);flex-wrap:wrap}
 .count div{min-width:78px;padding:6px 8px}
@@ -152,18 +149,13 @@ html{overflow-wrap:break-word}
 <main class="page">
 <section class="top">
   <div class="inner fade">
+    <div class="nm script">Heather <span class="amp">&amp;</span> Jack</div>
+    <h2 class="std script">Save the Date</h2>
     <div class="collage">
       <div class="polaroid">
         <span class="stamp edit" contenteditable="true" spellcheck="false">15.08.2027</span>
         <div class="ph"><img src="image/Edi_24.10.26_FULL(39).JPG" alt="Heather and Jack" onerror="this.style.display='none'"></div>
-        <div class="tag script edit" contenteditable="true" spellcheck="false">Future Mr. and Mrs.</div>
-      </div>
-      <div class="heart">
-        <svg viewBox="0 0 200 180" aria-hidden="true">
-          <path d="M100 168 C20 110 6 70 22 40 C40 8 84 14 100 46 C116 14 160 8 178 40 C194 70 180 110 100 168Z" fill="var(--heart)"/>
-          <path d="M100 168 C20 110 6 70 22 40 C40 8 84 14 100 46 C116 14 160 8 178 40 C194 70 180 110 100 168Z" fill="none" stroke="var(--heart)" stroke-width="12" stroke-dasharray="0.1 11" stroke-linecap="round"/>
-        </svg>
-        <div class="txt"><div class="caps" style="font-size:.6rem">Save the</div><div class="script edit" id="city2" contenteditable="true" spellcheck="false">Date</div></div>
+        <div class="cap script edit" contenteditable="true" spellcheck="false">Future Mr. and Mrs.</div>
       </div>
     </div>
     <h1 class="script">We’re getting Married</h1>
@@ -262,10 +254,6 @@ function tick(){
   document.getElementById("s").textContent = pad(s % 60);
 }
 tick(); setInterval(tick, 1000);
-
-// city stays identical everywhere
-var cities = ["city","city2"].map(function(i){ return document.getElementById(i); });
-cities.forEach(function(el){ el.addEventListener("input", function(){ cities.forEach(function(o){ if(o !== el) o.textContent = el.textContent; }); }); });
 
 // ADDRESS FORM -> Google Sheets (paste your Apps Script web app URL below)
 var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwNVh84WoUp2ZBJxohIq86ypeUye2wuGSdoKIWz7-3eloZqaPBpU77_-_72tZhvoZ8jGw/exec";
