@@ -140,6 +140,20 @@ html{overflow-wrap:break-word}
 .panel.open .panel-in{visibility:visible;transition-delay:0s}
 .panel .rsvp{margin-top:10px;padding-bottom:6px}
 @media(prefers-reduced-motion:reduce){.panel,.panel-in{transition:none}}
+
+/* CENTRING + MOBILE FIT */
+html,body{max-width:100%;overflow-x:clip}
+.top{overflow-x:clip;overflow-y:visible}
+.collage{width:100%}
+.bgpng{width:min(var(--w),90vw)}
+/* letter-spacing leaves a trailing gap that pulls centred text left; offset it */
+.caps{text-indent:.3em}
+.top .city{text-indent:.2em}
+.top .date{text-indent:.18em}
+.count small{text-indent:.25em}
+.btn{text-indent:.22em}
+.rsvp label{text-indent:0}
+@media(max-width:600px){.caps{text-indent:.2em}.count small{text-indent:.14em}.btn{text-indent:.14em}}
 </style>
 <script>document.documentElement.className="js locked"</script>
 </head>
