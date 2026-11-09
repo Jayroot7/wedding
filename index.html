@@ -129,6 +129,17 @@ html{overflow-wrap:break-word}
 .rsvp .msg.err{color:#9a4a3a}
 .thanks{display:none;margin-top:30px}.thanks .script{font-size:2.4rem;color:var(--pink)}
 @media(max-width:480px){.rsvp .row{grid-template-columns:1fr;gap:0}}
+
+/* ADDRESS DROPDOWN */
+#toggle{margin-top:26px}
+#toggle::after{content:"";display:inline-block;width:7px;height:7px;margin-left:12px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-3px) rotate(45deg);transition:transform .3s}
+#toggle[aria-expanded="true"]::after{transform:translateY(1px) rotate(-135deg)}
+.panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s ease}
+.panel.open{grid-template-rows:1fr}
+.panel-in{min-height:0;overflow:hidden;padding:0 4px;visibility:hidden;transition:visibility 0s .5s}
+.panel.open .panel-in{visibility:visible;transition-delay:0s}
+.panel .rsvp{margin-top:10px;padding-bottom:6px}
+@media(prefers-reduced-motion:reduce){.panel,.panel-in{transition:none}}
 </style>
 <script>document.documentElement.className="js locked"</script>
 </head>
@@ -193,25 +204,30 @@ html{overflow-wrap:break-word}
   <div class="inner fade">
     <p class="script">We look forward to celebrating together</p>
     <p class="sub">Kindly share your address so we can send your formal invitation.</p>
-    <form class="rsvp" id="addr" novalidate>
-      <label for="f-name">Name(s)</label>
-      <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g. Sarah &amp; Tom Smith" required>
-      <label for="f-a1">Address line 1</label>
-      <input id="f-a1" name="address1" type="text" autocomplete="address-line1" required>
-      <label for="f-a2">Address line 2 <span style="text-transform:none;letter-spacing:0;font-weight:400">(optional)</span></label>
-      <input id="f-a2" name="address2" type="text" autocomplete="address-line2">
-      <div class="row">
-        <div><label for="f-city">Town / City</label><input id="f-city" name="city" type="text" autocomplete="address-level2" required></div>
-        <div><label for="f-pc">Postcode</label><input id="f-pc" name="postcode" type="text" autocomplete="postal-code" required></div>
+    <button class="btn" type="button" id="toggle" aria-expanded="false" aria-controls="panel">Share your address</button>
+    <div class="panel" id="panel">
+      <div class="panel-in">
+        <form class="rsvp" id="addr" novalidate>
+          <label for="f-name">Name(s)</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g. Sarah &amp; Tom Smith" required>
+          <label for="f-a1">Address line 1</label>
+          <input id="f-a1" name="address1" type="text" autocomplete="address-line1" required>
+          <label for="f-a2">Address line 2 <span style="text-transform:none;letter-spacing:0;font-weight:400">(optional)</span></label>
+          <input id="f-a2" name="address2" type="text" autocomplete="address-line2">
+          <div class="row">
+            <div><label for="f-city">Town / City</label><input id="f-city" name="city" type="text" autocomplete="address-level2" required></div>
+            <div><label for="f-pc">Postcode</label><input id="f-pc" name="postcode" type="text" autocomplete="postal-code" required></div>
+          </div>
+          <label for="f-country">Country</label>
+          <input id="f-country" name="country" type="text" autocomplete="country-name" value="United Kingdom" required>
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+          <div class="hp" aria-hidden="true"><label>Leave empty<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+          <button class="btn" type="submit" id="send">Send my address</button>
+          <p class="msg" id="msg" role="status"></p>
+        </form>
       </div>
-      <label for="f-country">Country</label>
-      <input id="f-country" name="country" type="text" autocomplete="country-name" value="United Kingdom" required>
-      <label for="f-email">Email</label>
-      <input id="f-email" name="email" type="email" autocomplete="email" required>
-      <div class="hp" aria-hidden="true"><label>Leave empty<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
-      <button class="btn" type="submit" id="send">Send my address</button>
-      <p class="msg" id="msg" role="status"></p>
-    </form>
+    </div>
     <div class="thanks" id="thanks"><p class="script">Thank you!</p><p class="sub">We’ve got your details and your invitation will be on its way.</p></div>
   </div>
 </section>
@@ -277,6 +293,14 @@ function tick(){
 }
 tick(); setInterval(tick, 1000);
 
+// ADDRESS DROPDOWN
+var toggle = document.getElementById("toggle"), panel = document.getElementById("panel");
+toggle.addEventListener("click", function(){
+  var open = panel.classList.toggle("open");
+  toggle.setAttribute("aria-expanded", open);
+  if(open) setTimeout(function(){ document.getElementById("f-name").focus({preventScroll:true}); }, 350);
+});
+
 // ADDRESS FORM -> Google Sheets (paste your Apps Script web app URL below)
 var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwNVh84WoUp2ZBJxohIq86ypeUye2wuGSdoKIWz7-3eloZqaPBpU77_-_72tZhvoZ8jGw/exec";
 var form = document.getElementById("addr"), msg = document.getElementById("msg"), sendBtn = document.getElementById("send");
@@ -288,7 +312,8 @@ form.addEventListener("submit", function(e){
   sendBtn.disabled = true; sendBtn.textContent = "Sending…";
   var data = new URLSearchParams(new FormData(form));
   fetch(SCRIPT_URL, {method:"POST", mode:"no-cors", body:data}).then(function(){
-    form.style.display = "none"; document.querySelector(".closing .sub").style.display = "none";
+    panel.style.display = "none"; toggle.style.display = "none";
+    document.querySelector(".closing .sub").style.display = "none";
     document.getElementById("thanks").style.display = "block";
   }).catch(function(){
     sendBtn.disabled = false; sendBtn.textContent = "Send my address";
