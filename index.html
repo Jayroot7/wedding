@@ -7,10 +7,10 @@
 <title>Heather &amp; Jack</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fffdf7;--alt:#faf5e8;--card:#fffefb;--ink:#22221f;--soft:#5c584f;--line:#e9e1cd;--slot:#f2ebd9;--khaki:#dcd2b8;--olive:#625d4d;--heart:#f5eedc;--pink:#b34f6e;--shadow:rgba(60,55,40,.12);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#fffdf7;--alt:#faf5e8;--card:#fffefb;--ink:#22221f;--soft:#5c584f;--line:#e9e1cd;--slot:#f2ebd9;--khaki:#dcd2b8;--olive:#625d4d;--heart:#f5eedc;--pink:#515a3a;--shadow:rgba(60,55,40,.12);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}html.locked,html.locked body{overflow:hidden;height:100%}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;font-size:21px;font-weight:500;line-height:1.5;text-align:center;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;font-size:21px;font-weight:500;line-height:1.5;text-align:center;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
 .script{font-family:"Parisienne","Snell Roundhand",cursive;font-weight:400}
 .caps{letter-spacing:.24em;text-transform:uppercase;font-size:.88rem;color:var(--soft);font-weight:600}
 .edit{outline:none;border-radius:4px}.edit:focus{box-shadow:0 1px 0 var(--khaki)}
@@ -86,7 +86,7 @@ section{position:relative;padding:88px 24px;overflow:hidden}
 /* countdown */
 .count{display:flex;justify-content:center;gap:clamp(10px,3vw,28px);flex-wrap:wrap}
 .count div{min-width:78px;padding:6px 8px}
-.count b{display:block;font-size:2.6rem;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.count b{display:block;font-size:2.6rem;font-weight:600;line-height:1;font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1}
 .count small{display:block;margin-top:8px;letter-spacing:.2em;text-transform:uppercase;font-size:.75rem;font-weight:700;color:var(--soft)}
 .btn{display:inline-block;max-width:100%;line-height:1.6;margin-top:30px;padding:16px 30px;background:var(--khaki);color:#3a372f;text-decoration:none;letter-spacing:.2em;text-transform:uppercase;font-size:.88rem;font-weight:700;border-radius:2px;transition:background .3s,transform .3s;border:0;font-family:inherit;cursor:pointer}
 .btn:hover{background:#cfc3a1;transform:translateY(-2px)}
